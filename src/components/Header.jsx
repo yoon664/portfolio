@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // 스크롤에 따른 헤더 스타일 변경
   useEffect(() => {
@@ -24,109 +23,64 @@ const Header = () => {
         block: 'start'
       });
     }
-    setIsMobileMenuOpen(false);
   };
 
-  const navigationItems = [
-    { name: 'HOME', id: 'home' },
-    { name: 'WORKS', id: 'works' },
-    { name: 'ABOUT', id: 'about' },
-    { name: 'CONTACT', id: 'contact' }
-  ];
-
   return (
-    <>
-      {/* Main Header */}
-      <header 
-        className={`
-          fixed top-0 left-0 w-full z-40 transition-all duration-300
-          ${isScrolled 
-            ? 'bg-black/90 backdrop-blur-sm border-b border-gray-800' 
-            : 'bg-transparent'
-          }
-        `}
-      >
-        <nav className="flex justify-between items-center px-6 md:px-8 py-6">
-          {/* Left - Home Link */}
-          <div>
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-sm tracking-wider font-medium hover:text-gray-300 transition-colors duration-200"
-            >
-              HOME
-            </button>
-          </div>
-          
-          {/* Right - Navigation Menu (Desktop) */}
-          <div className="hidden md:flex space-x-16 text-sm tracking-wider font-medium">
-            {navigationItems.slice(1).map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.id)}
-                className="hover:text-gray-300 transition-colors duration-200 relative group"
-              >
-                {item.name}
-                {/* Hover underline effect */}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-200 group-hover:w-full"></span>
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
+    <header 
+      className={`
+        fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
+        ${isScrolled 
+          ? 'bg-black/80 backdrop-blur-md py-4' 
+          : 'bg-transparent py-8'
+        }
+      `}
+    >
+      <nav className="max-w-7xl mx-auto px-8 flex justify-center items-center">
+        {/* Navigation Menu - Center */}
+        <div className="flex items-center space-x-12">
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex flex-col justify-center items-center w-6 h-6 space-y-1"
+            onClick={() => scrollToSection('home')}
+            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
           >
-            <span 
-              className={`w-6 h-px bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}
-            ></span>
-            <span 
-              className={`w-6 h-px bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? 'opacity-0' : ''
-              }`}
-            ></span>
-            <span 
-              className={`w-6 h-px bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}
-            ></span>
+            Home
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
           </button>
-        </nav>
-      </header>
-
-      {/* Mobile Menu Overlay */}
+          
+          <button
+            onClick={() => scrollToSection('works')}
+            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+          >
+            Works
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+          </button>
+          
+          <button
+            onClick={() => scrollToSection('about')}
+            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+          >
+            About
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+          </button>
+          
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+          >
+            Contact
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+          </button>
+        </div>
+      </nav>
+      
+      {/* Bottom border line when scrolled */}
       <div 
         className={`
-          fixed inset-0 z-30 bg-black/95 backdrop-blur-sm md:hidden transition-all duration-300
-          ${isMobileMenuOpen 
-            ? 'opacity-100 visible' 
-            : 'opacity-0 invisible'
-          }
+          absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent
+          transition-opacity duration-500
+          ${isScrolled ? 'opacity-100' : 'opacity-0'}
         `}
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          {navigationItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.id)}
-              className="text-2xl font-light tracking-wider hover:text-gray-300 transition-colors duration-200"
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Click outside to close mobile menu */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 z-20 md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
-      )}
-    </>
+      />
+    </header>
   );
 };
 
