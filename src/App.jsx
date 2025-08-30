@@ -18,8 +18,7 @@ import { personalData } from './data';
 
 const App = () => {
   return (
-    <div className="bg-black text-white font-mono relative overflow-x-hidden">
-      {/* Fixed Layout Components */}
+    <div className="text-white font-mono relative overflow-x-hidden">
       <Header />
       <Progressbar showPercentage={false} />
       

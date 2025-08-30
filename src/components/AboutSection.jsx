@@ -5,10 +5,10 @@ const AboutSection = ({ personalData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const slideData = [
-    { number: '01', category: 'BRANDING', work: 'design' },
-    { number: '02', category: 'MOTION', work: 'photo' },
-    { number: '03', category: 'ILLUSTRATION', work: 'illustration' },
-    { number: '04', category: 'EDITORIAL', work: 'design' }
+    { number: '01', category: 'DEVELOPMENT', work: 'DEVELOPMENT' },
+    { number: '02', category: 'MOTION', work: 'MOTION' },
+    { number: '03', category: 'ILLUSTRATION', work: 'ILLUSTRATION' },
+    { number: '04', category: 'PHOTOSHOP', work: 'PHOTOSHOP' }
   ];
 
   // Auto slide every 3 seconds
@@ -32,19 +32,12 @@ const AboutSection = ({ personalData }) => {
             {/* Background with notebook texture */}
             <div className="absolute inset-0 bg-yellow-400"></div>
             
-            {/* Ticket-style dotted lines */}
-            {/* Top border */}
-            <div className="absolute top-0 left-0 right-0 border-t border-dashed border-gray-600 opacity-30 z-10"></div>
-            {/* Bottom border */}
-            <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-gray-600 opacity-30 z-10"></div>
-            {/* Left border */}
-            <div className="absolute left-0 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
-            {/* Right border */}
-            <div className="absolute right-0 top-0 bottom-0 border-r border-dashed border-gray-600 opacity-30 z-10"></div>
-            {/* Vertical divider between left and right sections */}
+            {/* 카드 앞면 점선 */}
+            <div className="absolute top-8 left-0 right-0 border-t border-dashed border-gray-600 opacity-30 z-10"></div>
+            <div className="absolute bottom-8 left-0 right-0 border-b border-dashed border-gray-600 opacity-30 z-10"></div>
+            <div className="absolute right-8 top-0 bottom-0 border-r border-dashed border-gray-600 opacity-30 z-10"></div>
             <div className="absolute left-1/3 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
-            {/* Left margin line */}
-            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
+            <div className="absolute left-8 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
             
             {/* Notebook holes on the left - realistic punched holes */}
             <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
@@ -76,12 +69,11 @@ const AboutSection = ({ personalData }) => {
             </div>
             
             {/* Header section with squares */}
-            <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 text-xs uppercase tracking-widest z-20">
+            <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 text-xs uppercase jetbrains z-20">
               <div className="flex items-center space-x-2">
                 <span>{current.number}</span>
                 <span className="ml-4">{current.category}</span>
               </div>
-              <span>ABOUT</span>
             </div>
             
             {/* Left side - placeholder for rotating images (1/3 of width) */}
@@ -93,7 +85,7 @@ const AboutSection = ({ personalData }) => {
             <div className="absolute left-20 bottom-4 z-20">
               <div className="flex items-center space-x-4">
                 <div className="w-3 h-3 bg-black"></div>
-                <span className="text-xs">{current.number} / 06</span>
+                <span className="text-xs jetbrains">{current.number} / 06</span>
                 <div className="w-3 h-3 bg-black"></div>
               </div>
             </div>
@@ -102,26 +94,27 @@ const AboutSection = ({ personalData }) => {
             <div className="absolute left-1/3 right-0 top-0 bottom-0 flex flex-col justify-center z-20 px-8">
               
               {/* Top section with ABOUT label */}
-              <div className="flex items-center justify-center mb-12">
+              <div className="flex items-center justify-center mb-7">
                 <div className="flex items-center space-x-4">
                   <div className="w-3 h-3 bg-black"></div>
-                  <span className="text-xs uppercase tracking-widest text-center">ABOUT</span>
+                  <span className="text-xs uppercase jetbrains text-center">ABOUT</span>
                   <div className="w-3 h-3 bg-black"></div>
                 </div>
               </div>
               
               {/* Main title section */}
-              <div className="text-center mb-12">
-                <h1 className="text-6xl font-light leading-none mb-0" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
-                  Wildy Riftian
+              <div className="text-left">
+                <h1 className="text-6xl font-light leading-none " style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
+                  Yoo Eunji
                 </h1>
                 <h2 className="text-6xl font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
                   does
                 </h2>
               </div>
+              <div className="absolute top-52 left-0 right-0 border-b border-dashed border-gray-600 opacity-30 z-10"></div>
               
               {/* Navigation section with arrows and center text */}
-              <div className="flex items-center justify-center mb-12">
+              <div className="flex items-center justify-center mb-5">
                 <div className="flex items-center space-x-8">
                   <span className="text-lg font-medium">&lt;</span>
                   
@@ -134,36 +127,36 @@ const AboutSection = ({ personalData }) => {
                   <span className="text-lg font-medium">&gt;</span>
                 </div>
               </div>
-              
+              <div className="absolute bottom-52 left-0 right-0 border-b border-dashed border-gray-600 opacity-30 z-10"></div>
               {/* Description text */}
-              <div className="text-xs leading-relaxed tracking-wide mb-12 px-4">
-                <p className="text-center">
-                  I'm an enthusiastic and multifaceted visual artist, motion designer, graphic designer, illustrator, and photographer. Passionate about pushing creative boundaries, I constantly seek to expand my expertise and combine skills across various mediums. I thrive on problem-solving and embrace challenges WITH A PROACTIVE AND OPEN-MINDED APPROACH.
+              <div className="text-sm leading-relaxed jetbrains px-4">
+                <p className="text-left">
+                  I'm an enthusiastic and multifaceted visual artist, motion designer, graphic designer, illustrator, and photographer. Passionate about pushing creative boundaries, I constantly seek to expand my expertise and combine skills across various mediums. 
+                  I thrive on problem-solving and embrace challenges WITH A PROACTIVE AND OPEN-MINDED APPROACH.
                 </p>
               </div>
               
               {/* 앞장 바닥 */}
-              <div className="text-xs text-center space-y-1">
-                <p className="uppercase tracking-wider">CURRENTLY BASED IN</p>
+              <div className="text-xs bottom-1 text-center space-y-1 jetbrains">
+                <p className="uppercase">CURRENTLY BASED IN</p>
                 <p className="font-medium">SAVANNAH, GA</p>
                 <p>32.0809° N, 81.0912° W</p>
               </div>
             </div>
             
             {/* 앞장 오른쪽 세로문장 */}
-            <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
-              <span className="text-xs uppercase tracking-widest">YOOEUNJIWORKS</span>
+            <div className="absolute -right-7 top-1/2 transform -translate-y-1/2 -rotate-90 z-20">
+              <span className="text-xs uppercase jetbrains">YOOEUNJIWORKS</span>
             </div>
           </div>
 
           {/* Back Side - Dark Notebook */}
           <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-[#212121] text-white shadow-2xl rounded-md relative overflow-hidden">
             {/* Ticket-style dotted lines */}
-            <div className="absolute top-0 left-0 right-0 border-t border-dashed border-gray-500 opacity-20 z-10"></div>
-            <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-gray-500 opacity-20 z-10"></div>
-            <div className="absolute left-0 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20 z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 border-r border-dashed border-gray-500 opacity-20 z-10"></div>
-            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20 z-10"></div>
+            <div className="absolute top-8 left-0 right-0 border-t border-dashed border-white opacity-20 z-10"></div>
+            <div className="absolute bottom-8 left-0 right-0 border-b border-dashed border-white opacity-20 z-10"></div>
+            <div className="absolute left-8 top-0 bottom-0 border-l border-dashed border-white opacity-20 z-10"></div>
+            <div className="absolute right-8 top-0 bottom-0 border-r border-dashed border-white opacity-20 z-10"></div>
             
             {/* Notebook holes on the left - realistic punched holes */}
             <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
@@ -195,8 +188,8 @@ const AboutSection = ({ personalData }) => {
             </div>
             
             {/* 뒷면 헤더 */}
-            <div className="absolute top-2 left-0 right-0 text-center z-20">
-              <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
+            <div className="absolute top-1 left-0 right-0 text-center z-20">
+              <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
             </div>
             
             {/* 뒷면 가운데 */}
@@ -209,13 +202,13 @@ const AboutSection = ({ personalData }) => {
             </div>
             
             {/* Footer */}
-            <div className="absolute bottom-2 left-0 right-0 text-center z-20">
-              <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
+            <div className="absolute bottom-1 left-0 right-0 text-center z-20">
+              <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
             </div>
             
             {/* 오른쪽 끝 문장 */}
-            <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
-              <span className="text-xs uppercase tracking-widest text-gray-400">YOOEUNJIWORKS</span>
+            <div className="absolute -right-7 top-1/2 transform -translate-y-1/2 -rotate-90 z-20">
+              <span className="text-xs uppercase jetbrains text-gray-400">YOOEUNJIWORKS</span>
             </div>
           </div>
         </div>
