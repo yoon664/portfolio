@@ -28,9 +28,9 @@ const AboutSection = ({ personalData }) => {
         <div className="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-preserve-3d cursor-pointer group-hover:rotate-x-180">
           
           {/* Front Side - Yellow Notebook */}
-          <div className="flip-card-front absolute inset-0 backface-hidden bg-[#f6e24a] text-black shadow-2xl rounded-md relative overflow-hidden">
+          <div className="flip-card-front absolute inset-0 backface-hidden bg-yellow-400 text-black shadow-2xl rounded-md relative overflow-hidden">
             {/* Background with notebook texture */}
-            <div className="absolute inset-0 bg-[#f6e24a]"></div>
+            <div className="absolute inset-0 bg-yellow-400"></div>
             
             {/* Ticket-style dotted lines */}
             {/* Top border */}
@@ -46,23 +46,42 @@ const AboutSection = ({ personalData }) => {
             {/* Left margin line */}
             <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
             
-            {/* Notebook holes on the left - actual holes (transparent) */}
+            {/* Notebook holes on the left - realistic punched holes */}
             <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#d4a948',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#d4a948',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#d4a948',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#d4a948',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#d4a948',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+              }}></div>
             </div>
             
-            {/* 네모네모 */}
+            {/* Header section with squares */}
             <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 text-xs uppercase tracking-widest z-20">
               <div className="flex items-center space-x-2">
                 <span>{current.number}</span>
                 <span className="ml-4">{current.category}</span>
               </div>
               <span>ABOUT</span>
-              <div className="w-3 h-3 bg-black"></div>
             </div>
             
             {/* Left side - placeholder for rotating images (1/3 of width) */}
@@ -80,74 +99,65 @@ const AboutSection = ({ personalData }) => {
             </div>
             
             {/* Main content area (right 2/3) */}
-            <div className="absolute left-1/3 right-8 top-16 bottom-16 flex flex-col justify-center z-20 pl-8">
-              {/* Top section with black squares */}
-              <div className="flex justify-between items-center mb-8">
-                <div className="text-xs text-center">
-                  <div className="w-3 h-3 bg-black mx-auto mb-1"></div>
-                  <span>ABOUT</span>
-                  <div className="w-3 h-3 bg-black mx-auto mt-1"></div>
+            <div className="absolute left-1/3 right-0 top-0 bottom-0 flex flex-col justify-center z-20 px-8">
+              
+              {/* Top section with ABOUT label */}
+              <div className="flex items-center justify-center mb-12">
+                <div className="flex items-center space-x-4">
+                  <div className="w-3 h-3 bg-black"></div>
+                  <span className="text-xs uppercase tracking-widest text-center">ABOUT</span>
+                  <div className="w-3 h-3 bg-black"></div>
                 </div>
-                <div className="w-3 h-3 bg-black"></div>
               </div>
               
-              {/* Main title */}
-              <div className="mb-8">
-                <h1 className="text-5xl font-light leading-tight mb-2" style={{fontFamily: 'serif'}}>
+              {/* Main title section */}
+              <div className="text-center mb-12">
+                <h1 className="text-6xl font-light leading-none mb-0" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
                   Wildy Riftian
                 </h1>
-                <h2 className="text-5xl font-light leading-tight mb-8" style={{fontFamily: 'serif'}}>
+                <h2 className="text-6xl font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
                   does
                 </h2>
-                
-                {/* Horizontal dotted line after title */}
-                <div className="border-b border-dashed border-gray-600 opacity-30 mb-8"></div>
-                
-                {/* Navigation arrows and center text */}
-                <div className="flex items-center justify-center space-x-8 mb-8">
-           
-                  <div className="flex items-center space-x-6">
-                    <span className="text-2xl">&lt;</span>
-                    <div className="text-center">
+              </div>
+              
+              {/* Navigation section with arrows and center text */}
+              <div className="flex items-center justify-center mb-12">
+                <div className="flex items-center space-x-8">
+                  <span className="text-lg font-medium">&lt;</span>
                   
-                      <p className="text-3xl italic font-script">{current.work}</p>
-                    </div>
-                    <span className="text-2xl">&gt;</span>
+                  <div className="text-center">
+                    <p className="text-3xl italic font-script" style={{fontFamily: '"Biro Script reduced Regular", cursive', fontSize: '45px', lineHeight: '40px'}}>
+                      {current.work}
+                    </p>
                   </div>
-
-                </div>
-                
-                {/* Horizontal dotted line before description */}
-                <div className="border-b border-dashed border-gray-600 opacity-30 mb-8"></div>
-                
-                {/* Description text */}
-                <div className="text-xs leading-relaxed tracking-wide">
-                  <p>
-                    I'm an enthusiastic and multifaceted visual artist, motion designer, 
-                    graphic designer, illustrator, and photographer. Passionate about pushing 
-                    creative boundaries, I constantly seek to expand my expertise and combine 
-                    skills across various mediums. I thrive on problem-solving and embrace 
-                    challenges WITH A PROACTIVE AND OPEN-MINDED APPROACH.
-                  </p>
+                  
+                  <span className="text-lg font-medium">&gt;</span>
                 </div>
               </div>
               
-              {/* Bottom location info */}
+              {/* Description text */}
+              <div className="text-xs leading-relaxed tracking-wide mb-12 px-4">
+                <p className="text-center">
+                  I'm an enthusiastic and multifaceted visual artist, motion designer, graphic designer, illustrator, and photographer. Passionate about pushing creative boundaries, I constantly seek to expand my expertise and combine skills across various mediums. I thrive on problem-solving and embrace challenges WITH A PROACTIVE AND OPEN-MINDED APPROACH.
+                </p>
+              </div>
+              
+              {/* 앞장 바닥 */}
               <div className="text-xs text-center space-y-1">
-                <p>CURRENTLY BASED IN</p>
-                <p>SAVANNAH, GA</p>
+                <p className="uppercase tracking-wider">CURRENTLY BASED IN</p>
+                <p className="font-medium">SAVANNAH, GA</p>
                 <p>32.0809° N, 81.0912° W</p>
               </div>
             </div>
             
-            {/* Right edge text */}
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
-              <span className="text-xs uppercase tracking-widest">WILDYRIFTIANWORKS</span>
+            {/* 앞장 오른쪽 세로문장 */}
+            <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
+              <span className="text-xs uppercase tracking-widest">YOOEUNJIWORKS</span>
             </div>
           </div>
 
           {/* Back Side - Dark Notebook */}
-          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-gray-800 text-white shadow-2xl rounded-md relative overflow-hidden">
+          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-[#212121] text-white shadow-2xl rounded-md relative overflow-hidden">
             {/* Ticket-style dotted lines */}
             <div className="absolute top-0 left-0 right-0 border-t border-dashed border-gray-500 opacity-20 z-10"></div>
             <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-gray-500 opacity-20 z-10"></div>
@@ -155,37 +165,57 @@ const AboutSection = ({ personalData }) => {
             <div className="absolute right-0 top-0 bottom-0 border-r border-dashed border-gray-500 opacity-20 z-10"></div>
             <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20 z-10"></div>
             
-            {/* Notebook holes on the left - actual holes (transparent) */}
+            {/* Notebook holes on the left - realistic punched holes */}
             <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
-              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#4a4a4a',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#4a4a4a',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#4a4a4a',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#4a4a4a',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+              }}></div>
+              <div className="w-3 h-3 rounded-full" style={{
+                backgroundColor: '#4a4a4a',
+                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+              }}></div>
             </div>
             
-            {/* Header */}
-            <div className="absolute top-8 left-0 right-0 text-center z-20">
+            {/* 뒷면 헤더 */}
+            <div className="absolute top-2 left-0 right-0 text-center z-20">
               <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
             </div>
             
-            {/* Main Content */}
+            {/* 뒷면 가운데 */}
             <div className="flex items-center justify-center h-full z-20">
               <div className="text-center">
-                <p className="text-5xl font-script italic text-gray-100 mb-4">
+                <p className="text-6xl font-script italic text-gray-100 mb-4">
                   read more
                 </p>
               </div>
             </div>
             
             {/* Footer */}
-            <div className="absolute bottom-8 left-0 right-0 text-center z-20">
+            <div className="absolute bottom-2 left-0 right-0 text-center z-20">
               <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
             </div>
             
-            {/* Right edge text */}
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
-              <span className="text-xs uppercase tracking-widest text-gray-400">WILDYRIFTIAN.COM</span>
+            {/* 오른쪽 끝 문장 */}
+            <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
+              <span className="text-xs uppercase tracking-widest text-gray-400">YOOEUNJIWORKS</span>
             </div>
           </div>
         </div>
