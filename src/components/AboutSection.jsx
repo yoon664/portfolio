@@ -1,133 +1,191 @@
 // AboutSection.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AboutSection = ({ personalData }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const slideData = [
+    { number: '01', category: 'BRANDING', work: 'design' },
+    { number: '02', category: 'MOTION', work: 'photo' },
+    { number: '03', category: 'ILLUSTRATION', work: 'illustration' },
+    { number: '04', category: 'EDITORIAL', work: 'design' }
+  ];
+
+  // Auto slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideData.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [slideData.length]);
+
+  const current = slideData[currentSlide];
+
   return (
     <section id="about" className="min-h-screen flex items-center justify-center bg-gray-400 relative">
       <div className="perspective-1000 w-[920px] h-[480px] group">
         <div className="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-preserve-3d cursor-pointer group-hover:rotate-x-180">
           
           {/* Front Side - Yellow Notebook */}
-          <div className="flip-card-front absolute inset-0 backface-hidden bg-yellow-400 text-black shadow-2xl rounded-md relative overflow-hidden">
-            {/* Notebook holes on the left */}
-            <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly">
-              <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-700 rounded-full"></div>
+          <div className="flip-card-front absolute inset-0 backface-hidden bg-[#f6e24a] text-black shadow-2xl rounded-md relative overflow-hidden">
+            {/* Background with notebook texture */}
+            <div className="absolute inset-0 bg-[#f6e24a]"></div>
+            
+            {/* Ticket-style dotted lines */}
+            {/* Top border */}
+            <div className="absolute top-0 left-0 right-0 border-t border-dashed border-gray-600 opacity-30 z-10"></div>
+            {/* Bottom border */}
+            <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-gray-600 opacity-30 z-10"></div>
+            {/* Left border */}
+            <div className="absolute left-0 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
+            {/* Right border */}
+            <div className="absolute right-0 top-0 bottom-0 border-r border-dashed border-gray-600 opacity-30 z-10"></div>
+            {/* Vertical divider between left and right sections */}
+            <div className="absolute left-1/3 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
+            {/* Left margin line */}
+            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
+            
+            {/* Notebook holes on the left - actual holes (transparent) */}
+            <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(0,0,0,0.1) 42%)'}}></div>
             </div>
             
-            {/* Dotted vertical line */}
-            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30"></div>
-            
-            {/* Header section */}
-            <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-8 text-xs uppercase tracking-widest">
-              <div className="flex items-center space-x-4">
-                <div className="w-4 h-4 bg-black rounded-sm"></div>
-                <span>05</span>
-                <span>ILLUSTRATION</span>
+            {/* 네모네모 */}
+            <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 text-xs uppercase tracking-widest z-20">
+              <div className="flex items-center space-x-2">
+                <span>{current.number}</span>
+                <span className="ml-4">{current.category}</span>
               </div>
               <span>ABOUT</span>
-              <div className="w-4 h-4 bg-black rounded-sm"></div>
+              <div className="w-3 h-3 bg-black"></div>
             </div>
             
-            {/* Main Content Area */}
-            <div className="flex h-full pt-16 pb-12">
-              {/* Left side with rotating images */}
-              <div className="w-1/2 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center transform rotate-45">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center transform -rotate-45">
-                      <span className="text-xs font-bold">IMG</span>
+            {/* Left side - placeholder for rotating images (1/3 of width) */}
+            <div className="absolute left-20 top-16 bottom-20 w-1/3 z-10">
+              {/* This space is reserved for rotating images to be added later */}
+            </div>
+            
+            {/* Left bottom section with slide counter */}
+            <div className="absolute left-20 bottom-4 z-20">
+              <div className="flex items-center space-x-4">
+                <div className="w-3 h-3 bg-black"></div>
+                <span className="text-xs">{current.number} / 06</span>
+                <div className="w-3 h-3 bg-black"></div>
+              </div>
+            </div>
+            
+            {/* Main content area (right 2/3) */}
+            <div className="absolute left-1/3 right-8 top-16 bottom-16 flex flex-col justify-center z-20 pl-8">
+              {/* Top section with black squares */}
+              <div className="flex justify-between items-center mb-8">
+                <div className="text-xs text-center">
+                  <div className="w-3 h-3 bg-black mx-auto mb-1"></div>
+                  <span>ABOUT</span>
+                  <div className="w-3 h-3 bg-black mx-auto mt-1"></div>
+                </div>
+                <div className="w-3 h-3 bg-black"></div>
+              </div>
+              
+              {/* Main title */}
+              <div className="mb-8">
+                <h1 className="text-5xl font-light leading-tight mb-2" style={{fontFamily: 'serif'}}>
+                  Wildy Riftian
+                </h1>
+                <h2 className="text-5xl font-light leading-tight mb-8" style={{fontFamily: 'serif'}}>
+                  does
+                </h2>
+                
+                {/* Horizontal dotted line after title */}
+                <div className="border-b border-dashed border-gray-600 opacity-30 mb-8"></div>
+                
+                {/* Navigation arrows and center text */}
+                <div className="flex items-center justify-center space-x-8 mb-8">
+           
+                  <div className="flex items-center space-x-6">
+                    <span className="text-2xl">&lt;</span>
+                    <div className="text-center">
+                  
+                      <p className="text-3xl italic font-script">{current.work}</p>
                     </div>
+                    <span className="text-2xl">&gt;</span>
                   </div>
+
+                </div>
+                
+                {/* Horizontal dotted line before description */}
+                <div className="border-b border-dashed border-gray-600 opacity-30 mb-8"></div>
+                
+                {/* Description text */}
+                <div className="text-xs leading-relaxed tracking-wide">
+                  <p>
+                    I'm an enthusiastic and multifaceted visual artist, motion designer, 
+                    graphic designer, illustrator, and photographer. Passionate about pushing 
+                    creative boundaries, I constantly seek to expand my expertise and combine 
+                    skills across various mediums. I thrive on problem-solving and embrace 
+                    challenges WITH A PROACTIVE AND OPEN-MINDED APPROACH.
+                  </p>
                 </div>
               </div>
               
-              {/* Right side with text content */}
-              <div className="w-1/2 px-8 flex flex-col justify-center">
-                <div className="mb-8">
-                  <h3 className="text-6xl font-light leading-tight mb-2">
-                    {personalData.name}
-                  </h3>
-                  <h4 className="text-6xl font-light leading-tight mb-6">
-                    does
-                  </h4>
-                  
-                  <div className="mb-8">
-                    <p className="text-3xl italic font-script text-center">
-                      creative design
-                    </p>
-                  </div>
-                  
-                  <div className="text-xs uppercase leading-relaxed tracking-wide">
-                    <p>
-                      I'M AN ENTHUSIASTIC AND MULTIFACETED VISUAL ARTIST, MOTION DESIGNER,<br/>
-                      GRAPHIC DESIGNER, ILLUSTRATOR, AND PHOTOGRAPHER. PASSIONATE ABOUT PUSHING<br/>
-                      CREATIVE BOUNDARIES, I CONSTANTLY SEEK TO EXPAND MY EXPERTISE AND COMBINE<br/>
-                      SKILLS ACROSS VARIOUS MEDIUMS. I THRIVE ON PROBLEM-SOLVING AND EMBRACE<br/>
-                      CHALLENGES WITH A PROACTIVE AND OPEN-MINDED APPROACH.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Footer section */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-between items-center px-8 text-xs">
-              <div className="flex items-center space-x-4">
-                <div className="w-3 h-3 bg-black rounded-sm"></div>
-                <span>05 / 06</span>
-                <div className="w-3 h-3 bg-black rounded-sm"></div>
-              </div>
-              <div className="flex items-center space-x-8">
-                <span>CURRENTLY BASED IN</span>
-                <span>SEOUL, KR</span>
-                <span>37.5665° N, 126.9780° E</span>
+              {/* Bottom location info */}
+              <div className="text-xs text-center space-y-1">
+                <p>CURRENTLY BASED IN</p>
+                <p>SAVANNAH, GA</p>
+                <p>32.0809° N, 81.0912° W</p>
               </div>
             </div>
             
             {/* Right edge text */}
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90">
-              <span className="text-xs uppercase tracking-widest">PORTFOLIO WORKS</span>
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
+              <span className="text-xs uppercase tracking-widest">WILDYRIFTIANWORKS</span>
             </div>
           </div>
 
-          {/* Back Side - Black Notebook */}
-          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-gray-900 text-white shadow-2xl rounded-md relative overflow-hidden">
-            {/* Notebook holes on the left */}
-            <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly">
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
+          {/* Back Side - Dark Notebook */}
+          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-gray-800 text-white shadow-2xl rounded-md relative overflow-hidden">
+            {/* Ticket-style dotted lines */}
+            <div className="absolute top-0 left-0 right-0 border-t border-dashed border-gray-500 opacity-20 z-10"></div>
+            <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-gray-500 opacity-20 z-10"></div>
+            <div className="absolute left-0 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20 z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 border-r border-dashed border-gray-500 opacity-20 z-10"></div>
+            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20 z-10"></div>
+            
+            {/* Notebook holes on the left - actual holes (transparent) */}
+            <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly z-30">
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
+              <div className="w-3 h-3 rounded-full" style={{backgroundColor: 'transparent', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.3)', background: 'radial-gradient(circle, transparent 40%, rgba(255,255,255,0.1) 42%)'}}></div>
             </div>
             
-            {/* Dotted vertical line */}
-            <div className="absolute left-16 top-0 bottom-0 border-l border-dashed border-gray-500 opacity-20"></div>
-            
             {/* Header */}
-            <div className="absolute top-4 left-0 right-0 text-center">
+            <div className="absolute top-8 left-0 right-0 text-center z-20">
               <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
             </div>
             
             {/* Main Content */}
-            <div className="flex items-center justify-center h-full">
-              <p className="text-5xl font-script italic text-gray-100">
-                read more
-              </p>
+            <div className="flex items-center justify-center h-full z-20">
+              <div className="text-center">
+                <p className="text-5xl font-script italic text-gray-100 mb-4">
+                  read more
+                </p>
+              </div>
             </div>
             
             {/* Footer */}
-            <div className="absolute bottom-4 left-0 right-0 text-center">
+            <div className="absolute bottom-8 left-0 right-0 text-center z-20">
               <span className="text-xs uppercase tracking-widest text-gray-400">ABOUT</span>
             </div>
             
             {/* Right edge text */}
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90">
-              <span className="text-xs uppercase tracking-widest text-gray-400">{personalData.name}.COM</span>
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 z-20">
+              <span className="text-xs uppercase tracking-widest text-gray-400">WILDYRIFTIAN.COM</span>
             </div>
           </div>
         </div>
@@ -154,7 +212,6 @@ const AboutSection = ({ personalData }) => {
           position: relative;
           width: 100%;
           height: 100%;
-          text-align: center;
           transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           transform-style: preserve-3d;
         }
@@ -165,7 +222,7 @@ const AboutSection = ({ personalData }) => {
           width: 100%;
           height: 100%;
           backface-visibility: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
         
         .flip-card-back {
@@ -182,8 +239,16 @@ const AboutSection = ({ personalData }) => {
         
         @media (max-width: 1024px) {
           .flip-card-inner {
-            width: 600px;
-            height: 320px;
+            width: 700px;
+            height: 400px;
+          }
+          
+          h1, h2 {
+            font-size: 2.5rem;
+          }
+          
+          .text-3xl {
+            font-size: 1.5rem;
           }
         }
         
@@ -191,6 +256,18 @@ const AboutSection = ({ personalData }) => {
           .flip-card-inner {
             width: 350px;
             height: 240px;
+          }
+          
+          h1, h2 {
+            font-size: 1.5rem;
+          }
+          
+          .text-3xl {
+            font-size: 1rem;
+          }
+          
+          .text-xs {
+            font-size: 0.6rem;
           }
         }
       `}</style>

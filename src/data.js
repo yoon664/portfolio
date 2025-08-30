@@ -1,5 +1,5 @@
 export const personalData = {
-  name: "유은지",
+  name: "YOO EUNJI",
   title: "Creative Developer",
   description: "안녕하세요! ~~~입니다.",
   email: "yooj0264@gmail.com",
