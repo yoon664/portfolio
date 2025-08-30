@@ -1,143 +1,140 @@
 import React, { useState, useEffect } from 'react';
 
-const Progressbar = ({ 
-  className = "",
-  showPercentage = false,
-  color = "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500",
-  backgroundColor = "bg-gray-200 dark:bg-gray-800",
-  height = "h-1",
-  position = "fixed",
-  animate = true 
-}) => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+const Progressbar = () => {
+  const [activeSection, setActiveSection] = useState(0);
+  const [rulerProgressPosition, setRulerProgressPosition] = useState(0);
+
+  // 섹션 데이터
+  const sections = [
+    { id: 'home', label: '', width: 180, isFirst: true },
+    { id: 'works', label: 'Works', width: 140 },
+    { id: 'about', label: 'About', width: 330 },
+    { id: 'projects', label: 'Projects', width: 270 },
+    { id: 'skills', label: 'Skills', width: 140 },
+    { id: 'contact', label: 'Contact', width: 305 },
+    { id: 'end', label: '', width: 140, isLast: true }
+  ];
+
+  // 누적 width 계산
+  const cumulativeWidths = sections.reduce((acc, section, i) => {
+    const prev = i === 0 ? 0 : acc[i - 1];
+    acc.push(prev + section.width);
+    return acc;
+  }, []);
+  const totalWidth = cumulativeWidths[cumulativeWidths.length - 1];
 
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const currentProgress = window.pageYOffset;
-      const progress = totalHeight > 0 ? (currentProgress / totalHeight) * 100 : 0;
-      
-      setScrollProgress(Math.min(progress, 100));
-      setIsVisible(currentProgress > 100); // 100px 스크롤 후 표시
-    };
+      const scrollY = window.pageYOffset;
+      const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
 
-    // 초기 스크롤 위치 체크
-    handleScroll();
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      // ruler 전체 위치 계산 (작은 이동 바)
+      setRulerProgressPosition((progress / 100) * totalWidth);
 
-  return (
-    <>
-      {/* Progress Bar */}
-      <div 
-        className={`
-          ${position} bottom-0 left-0 w-full z-50 
-          ${backgroundColor} 
-          ${height}
-          ${animate ? 'transition-opacity duration-300' : ''}
-          ${isVisible ? 'opacity-100' : 'opacity-0'}
-          ${className}
-        `}
-      >
-        {/* Progress Fill */}
-        <div 
-          className={`
-            ${height} 
-            ${color}
-            ${animate ? 'transition-all duration-150 ease-out' : ''}
-            relative overflow-hidden
-          `}
-          style={{ width: `${scrollProgress}%` }}
-        >
-          {/* Animated Shimmer Effect */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-            style={{
-              animation: animate ? 'shimmer 2s infinite' : 'none',
-              transform: 'skewX(-15deg)'
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Optional Percentage Display */}
-      {showPercentage && isVisible && (
-        <div 
-          className={`
-            ${position} bottom-4 right-4 z-50
-            bg-black/80 text-white px-3 py-1 rounded-full text-sm font-mono
-            ${animate ? 'transition-opacity duration-300' : ''}
-          `}
-        >
-          {Math.round(scrollProgress)}%
-        </div>
-      )}
-
-      {/* CSS Animation for Shimmer Effect */}
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%) skewX(-15deg);
-          }
-          50% {
-            transform: translateX(0%) skewX(-15deg);
-          }
-          100% {
-            transform: translateX(100%) skewX(-15deg);
+      // 현재 활성 섹션 감지
+      const sectionElements = sections.slice(0, -1).map(s => document.getElementById(s.id));
+      let current = 0;
+      sectionElements.forEach((el, idx) => {
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+            current = idx;
           }
         }
-      `}</style>
-    </>
-  );
-};
+      });
+      setActiveSection(current);
+    };
 
-// Usage Examples:
-export const ProgressbarExamples = () => {
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [totalWidth]);
+
+  const scrollToSection = id => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <div className="space-y-8 p-8">
-      <h2 className="text-2xl font-bold">Progress Bar Examples</h2>
-      
-      {/* Default ComPsych Style */}
-      <div>
-        <h3 className="text-lg mb-2">Default ComPsych Style</h3>
-        <Progressbar />
-      </div>
-      
-      {/* With Percentage */}
-      <div>
-        <h3 className="text-lg mb-2">With Percentage Display</h3>
-        <Progressbar showPercentage={true} />
-      </div>
-      
-      {/* Custom Colors */}
-      <div>
-        <h3 className="text-lg mb-2">Custom Brand Colors</h3>
-        <Progressbar 
-          color="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"
-          backgroundColor="bg-gray-100 dark:bg-gray-900"
+    <div
+      className="fixed bottom-0 left-0 right-0 z-[88]"
+      style={{
+        filter: 'invert()',
+        mixBlendMode: 'difference',
+        pointerEvents: 'none',
+      }}
+    >
+      <style jsx>{`
+        .home-ruler-main-item-line {
+          --ruler-width: 1px;
+          --ruler-gap: 9px;
+          --ruler-cl: rgba(86, 122, 139, 0.4);
+        }
+        .home-ruler-main-item-line-body {
+          background-image: linear-gradient(90deg, var(--ruler-cl) var(--ruler-width), transparent var(--ruler-width));
+          background-position: 0 0;
+          background-repeat: repeat-x;
+          background-size: calc(var(--ruler-width) + var(--ruler-gap)) 100%;
+          height: 100%;
+        }
+        .home-ruler-main-item-line-head {
+          background-image: linear-gradient(90deg, var(--ruler-cl) var(--ruler-width), transparent var(--ruler-width));
+          background-repeat: no-repeat;
+          background-size: calc(var(--ruler-width) + var(--ruler-gap)) 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: width 0.3s ease-out;
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto px-8 relative">
+        {/* 작은 이동 바 */}
+        <div
+          className="absolute bottom-0 w-2 h-8 bg-white z-10"
+          style={{ transform: `translateX(${rulerProgressPosition}px)`, transition: 'transform 0.2s ease-out' }}
         />
-      </div>
-      
-      {/* Thick Version */}
-      <div>
-        <h3 className="text-lg mb-2">Thick Version</h3>
-        <Progressbar 
-          height="h-2"
-          color="bg-gradient-to-r from-orange-500 via-red-500 to-pink-500"
-        />
-      </div>
-      
-      {/* Static Version (for testing) */}
-      <div>
-        <h3 className="text-lg mb-2">Static Version</h3>
-        <Progressbar 
-          position="relative"
-          animate={false}
-          className="mb-4"
-        />
+
+        {/* 눈금 컨테이너 */}
+        <div className="flex items-end h-16 relative overflow-hidden">
+          {sections.map((section, index) => {
+            const isActive = index <= activeSection;
+            const headWidth =
+              index < activeSection
+                ? '100%'
+                : index === activeSection
+                ? `${rulerProgressPosition - (cumulativeWidths[index - 1] || 0)}px`
+                : '0px';
+
+            return (
+              <div
+                key={section.id}
+                className="relative flex items-end"
+                style={{ width: `${section.width}px`, flexShrink: 0 }}
+              >
+                <div className="home-ruler-main-item-line w-full h-6 relative">
+                  {!section.isFirst && (
+                    <div className="home-ruler-main-item-line-head" style={{ width: headWidth }} />
+                  )}
+                  {!section.isLast && <div className="home-ruler-main-item-line-body absolute top-0 left-0 w-full" />}
+                </div>
+
+                {section.label && (
+                  <button
+                    onClick={() => scrollToSection(section.id)}
+                    className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-medium whitespace-nowrap transition-opacity duration-300 pointer-events-auto ${
+                      activeSection === index ? 'opacity-100' : 'opacity-60'
+                    }`}
+                  >
+                    {section.label}
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

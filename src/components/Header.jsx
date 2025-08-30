@@ -30,56 +30,57 @@ const Header = () => {
       className={`
         fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out
         ${isScrolled 
-          ? 'bg-black/80 backdrop-blur-md py-4' 
-          : 'bg-transparent py-8'
+          ? 'bg-transparent py-4' 
+          : 'bg-transparent py-4'
         }
       `}
     >
       <nav className="max-w-7xl mx-auto px-8 flex justify-center items-center">
         {/* Navigation Menu - Center */}
-        <div className="flex items-center space-x-12">
+        <div className="flex items-center space-x-72">
           <button
             onClick={() => scrollToSection('home')}
-            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+            className="text-lg font-light tracking-wider uppercase transition-all duration-300 relative group overflow-hidden px-4 py-2"
           >
-            Home
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="block">Home</span>
+            {/* 아래에서 위로 올라오는 배경 효과 */}
+            <div className="absolute bottom-0 left-0 right-0 h-0 bg-white text-black overflow-hidden transition-all duration-400 ease-out group-hover:h-full">
+              <span className="absolute bottom-0 left-0 right-0 block px-4 py-2 text-lg font-light tracking-wider uppercase">Home</span>
+            </div>
           </button>
           
           <button
             onClick={() => scrollToSection('works')}
-            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+            className="text-lg font-light tracking-wider uppercase transition-all duration-300 relative group overflow-hidden px-4 py-2"
           >
-            Works
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="block">Works</span>
+            <div className="absolute bottom-0 left-0 right-0 h-0 bg-white text-black overflow-hidden transition-all duration-400 ease-out group-hover:h-full">
+              <span className="absolute bottom-0 left-0 right-0 block px-4 py-2 text-lg font-light tracking-wider uppercase">Works</span>
+            </div>
           </button>
           
           <button
             onClick={() => scrollToSection('about')}
-            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+            className="text-lg font-light tracking-wider uppercase transition-all duration-300 relative group overflow-hidden px-4 py-2"
           >
-            About
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="block">About</span>
+            <div className="absolute bottom-0 left-0 right-0 h-0 bg-white text-black overflow-hidden transition-all duration-400 ease-out group-hover:h-full">
+              <span className="absolute bottom-0 left-0 right-0 block px-4 py-2 text-lg font-light tracking-wider uppercase">About</span>
+            </div>
           </button>
           
           <button
             onClick={() => scrollToSection('contact')}
-            className="text-sm font-light tracking-wider uppercase hover:text-gray-300 transition-all duration-300 relative group"
+            className="text-lg font-light tracking-wider uppercase transition-all duration-300 relative group overflow-hidden px-4 py-2"
           >
-            Contact
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
+            <span className="block">Contact</span>
+            <div className="absolute bottom-0 left-0 right-0 h-0 bg-white text-black overflow-hidden transition-all duration-400 ease-out group-hover:h-full">
+              <span className="absolute bottom-0 left-0 right-0 block px-4 py-2 text-lg font-light tracking-wider uppercase">Contact</span>
+            </div>
           </button>
         </div>
       </nav>
       
-      {/* Bottom border line when scrolled */}
-      <div 
-        className={`
-          absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent
-          transition-opacity duration-500
-          ${isScrolled ? 'opacity-100' : 'opacity-0'}
-        `}
-      />
     </header>
   );
 };
