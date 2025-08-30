@@ -137,7 +137,7 @@ const AboutSection = ({ personalData }) => {
               </div>
               
               {/* 앞장 바닥 */}
-              <div className="text-xs bottom-1 text-center space-y-1 jetbrains">
+              <div className="text-xs bottom-1 text-center space-y-1 jetbrains flex flex-row justify-between w-full">
                 <p className="uppercase">CURRENTLY BASED IN</p>
                 <p className="font-medium">SAVANNAH, GA</p>
                 <p>32.0809° N, 81.0912° W</p>
