@@ -5,7 +5,7 @@ const AboutSection = ({ personalData }) => {
   return (
     <section id="about" className="min-h-screen flex items-center justify-center bg-gray-400 relative">
       <div className="perspective-1000 w-[920px] h-[480px] group">
-        <div className="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-preserve-3d cursor-pointer group-hover:rotate-y-180">
+        <div className="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-preserve-3d cursor-pointer group-hover:rotate-x-180">
           
           {/* Front Side - Yellow Notebook */}
           <div className="flip-card-front absolute inset-0 backface-hidden bg-yellow-400 text-black shadow-2xl rounded-md relative overflow-hidden">
@@ -95,7 +95,7 @@ const AboutSection = ({ personalData }) => {
           </div>
 
           {/* Back Side - Black Notebook */}
-          <div className="flip-card-back absolute inset-0 backface-hidden rotate-y-180 bg-gray-900 text-white shadow-2xl rounded-md relative overflow-hidden">
+          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-gray-900 text-white shadow-2xl rounded-md relative overflow-hidden">
             {/* Notebook holes on the left */}
             <div className="absolute left-6 top-0 bottom-0 flex flex-col justify-evenly">
               <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
@@ -146,8 +146,8 @@ const AboutSection = ({ personalData }) => {
           backface-visibility: hidden;
         }
         
-        .rotate-y-180 {
-          transform: rotateY(180deg);
+        .rotate-x-180 {
+          transform: rotateX(180deg);
         }
         
         .flip-card-inner {
@@ -169,7 +169,7 @@ const AboutSection = ({ personalData }) => {
         }
         
         .flip-card-back {
-          transform: rotateY(180deg);
+          transform: rotateX(180deg);
         }
         
         .font-script {
@@ -177,7 +177,7 @@ const AboutSection = ({ personalData }) => {
         }
         
         .group:hover .flip-card-inner {
-          transform: rotateY(180deg);
+          transform: rotateX(180deg);
         }
         
         @media (max-width: 1024px) {
