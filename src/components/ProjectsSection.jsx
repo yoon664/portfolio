@@ -103,9 +103,9 @@ const ProjectsSection = () => {
           ))}
 
           {/* SEE ALL Button */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center bg-yellow-300">
             <button className="text-center">
-              <span className="text-xs jetbrains tracking-wider" style={{ color: '#212121' }}>
+              <span className="text-lg jetbrains tracking-wider" style={{ color: '#212121' }}>
                 SEE ALL →
               </span>
             </button>
