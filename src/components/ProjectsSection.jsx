@@ -17,13 +17,13 @@ const ProjectsSection = () => {
     { id: '12', image: '/img/ill6.png', title: 'Design' },
     { id: '13', image: '/img/ill7.png', title: 'Design' },
     { id: '14', image: '/img/sanrio3.png', title: 'Design' },
-    { id: '15', image: '/img/sanriogif.gif', title: 'Design' },
-    { id: '16', image: '/img/sanrio1.png', title: 'Design' },
+    { id: '15', image: '/img/pho1.png', title: 'Design' },
+    { id: '16', image: '/img/pho2.png', title: 'Design' },
     { id: '17', image: '/img/sanrio3.png', title: 'Design' },
-    { id: '18', image: '/img/sanriogif.gif', title: 'Design' },
+    { id: '18', image: '/img/pho3.png', title: 'Design' },
     { id: '19', image: '/img/sanrio1.png', title: 'Design' },
-    { id: '20', image: '/img/sanrio3.png', title: 'Design' },
-    { id: '21', image: '/img/sanriogif.gif', title: 'Design' },
+    { id: '20', image: '/img/clean1.png', title: 'Design' },
+    { id: '21', image: '/img/clean2.png', title: 'Design' },
     { id: '22', image: '/img/sanrio1.png', title: 'Design' },
     { id: '23', image: '/img/sanrio3.png', title: 'Design' },
   ];
@@ -93,7 +93,7 @@ const ProjectsSection = () => {
                 <img 
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 group-hover:rotate-2 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"
                 />
               </div>
               
