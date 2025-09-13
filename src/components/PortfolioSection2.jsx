@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PortfolioSection = () => {
+const PortfolioSection2 = () => {
   const scrollingTags = [
     "3D Modeling", "Character Design", "Character Rigging", 
     "Texturing", "3D Animation"
@@ -10,14 +10,14 @@ const PortfolioSection = () => {
     <section 
       id="works"
       className="w-full h-screen bg-gray-100 flex flex-col overflow-hidden sticky top-0"
-      style={{ backgroundColor: '#f5f5f5', zIndex: 1 }}
+      style={{ backgroundColor: '#008761', zIndex: 2 }}
     >
       {/* Header */}
       <header className="flex justify-between items-center px-8 py-6 border-b border-gray-300">
         <div className="flex items-center gap-4">
 
-          <h2 className="text-sm font-medium tracking-wider jetbrains" style={{ color: '#212121' }}>
-            FEATURED WORK 01
+          <h2 className="text-sm font-medium tracking-wider jetbrains" style={{ color: '#fffff' }}>
+            FEATURED WORK 02
           </h2>
         </div>
         
@@ -34,15 +34,15 @@ const PortfolioSection = () => {
         {/* Top Section - Title and Meta */}
         <div className="flex justify-between items-start mb-6">
           <div className="flex-1">
-            <h1 className="text-4xl md:text-5xl font-light leading-tight" style={{ color: '#212121' }}>
-              Sanrio: Character &<br />
-              Company page
+            <h1 className="text-4xl md:text-5xl font-light leading-tight" style={{ color: '#fffff' }}>
+              Amio<br />
+              Pulmuone amio
             </h1>
           </div>
           
           <div className="text-right ml-8 flex flex-col items-end">
-            <div className="text-xl font-medium mb-2 jetbrains" style={{ color: '#212121' }}>2025</div>
-            <div className="text-xs tracking-wider uppercase jetbrains mb-4" style={{ color: '#212121' }}>
+            <div className="text-xl font-medium mb-2 jetbrains" style={{ color: '#fffff' }}>2025</div>
+            <div className="text-xs tracking-wider uppercase jetbrains mb-4" style={{ color: '#fffff' }}>
               ~ TECH WORKS
             </div>
             
@@ -74,12 +74,12 @@ const PortfolioSection = () => {
         <div className="flex gap-8 flex-1">
           {/* Left - Description and Button (Narrower) */}
           <div className="w-80 flex flex-col justify-start">
-            <p className="text-xs leading-relaxed mb-6 jetbrains uppercase" style={{ color: '#212121' }}>
-              Whimsical animations bring each character to life, revealing their profiles, personalities, and merchandise. 
-              The project is defined by its soft pastel design and fluid motion, presented as a heartfelt, 
-              fan-page-style portfolio that showcases a genuine passion for the characters.
+            <p className="text-xs leading-relaxed mb-6 jetbrains uppercase" style={{ color: '#fffff' }}>
+              brand website for the premium pet food brand Amio. 
+              The site features an interactive design where content dynamically appears as users scroll, 
+              allowing them to explore the brand story, product lineup, and unique ingredients in an engaging and immersive way.
             </p>
-            <button className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" style={{ color: '#212121' }}>
+            <button className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" style={{ color: '#fffff' }}>
               <span className="flex items-center gap-2">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
@@ -91,7 +91,7 @@ const PortfolioSection = () => {
           <div className="flex-1">
             <div className="rounded-sm overflow-hidden h-full">
               <img 
-                src="/img/sanrio1.png" 
+                src="/img/amiogif.gif" 
                 alt="3D Deep-Sea Environment" 
                 className="w-full h-full object-cover"
               />
@@ -103,7 +103,7 @@ const PortfolioSection = () => {
             {/* Top Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
               <img 
-                src="/img/sanriogif.gif" 
+                src="/img/amiogif2.gif" 
                 alt="3D Animation GIF" 
                 className="w-full h-full object-cover"
               />
@@ -112,7 +112,7 @@ const PortfolioSection = () => {
             {/* Bottom Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
               <img 
-                src="/img/sanrio3.png" 
+                src="/img/amiogif3.gif" 
                 alt="3D Detail Image" 
                 className="w-full h-full object-cover"
               />
@@ -139,4 +139,4 @@ const PortfolioSection = () => {
   );
 };
 
-export default PortfolioSection;
+export default PortfolioSection2;

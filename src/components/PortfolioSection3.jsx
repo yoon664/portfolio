@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PortfolioSection = () => {
+const PortfolioSection3 = () => {
   const scrollingTags = [
     "3D Modeling", "Character Design", "Character Rigging", 
     "Texturing", "3D Animation"
@@ -10,14 +10,14 @@ const PortfolioSection = () => {
     <section 
       id="works"
       className="w-full h-screen bg-gray-100 flex flex-col overflow-hidden sticky top-0"
-      style={{ backgroundColor: '#f5f5f5', zIndex: 1 }}
+      style={{ backgroundColor: '#DE7439', zIndex: 3 }}
     >
       {/* Header */}
       <header className="flex justify-between items-center px-8 py-6 border-b border-gray-300">
         <div className="flex items-center gap-4">
 
           <h2 className="text-sm font-medium tracking-wider jetbrains" style={{ color: '#212121' }}>
-            FEATURED WORK 01
+            FEATURED WORK 03
           </h2>
         </div>
         
@@ -35,8 +35,8 @@ const PortfolioSection = () => {
         <div className="flex justify-between items-start mb-6">
           <div className="flex-1">
             <h1 className="text-4xl md:text-5xl font-light leading-tight" style={{ color: '#212121' }}>
-              Sanrio: Character &<br />
-              Company page
+              Hanhwa<br />
+              Company & History
             </h1>
           </div>
           
@@ -91,7 +91,7 @@ const PortfolioSection = () => {
           <div className="flex-1">
             <div className="rounded-sm overflow-hidden h-full">
               <img 
-                src="/img/sanrio1.png" 
+                src="/img/hanhwa.png" 
                 alt="3D Deep-Sea Environment" 
                 className="w-full h-full object-cover"
               />
@@ -103,7 +103,7 @@ const PortfolioSection = () => {
             {/* Top Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
               <img 
-                src="/img/sanriogif.gif" 
+                src="/img/hanhwagif.gif" 
                 alt="3D Animation GIF" 
                 className="w-full h-full object-cover"
               />
@@ -112,7 +112,7 @@ const PortfolioSection = () => {
             {/* Bottom Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
               <img 
-                src="/img/sanrio3.png" 
+                src="/img/hanhwa2.png" 
                 alt="3D Detail Image" 
                 className="w-full h-full object-cover"
               />
@@ -139,4 +139,4 @@ const PortfolioSection = () => {
   );
 };
 
-export default PortfolioSection;
+export default PortfolioSection3;

@@ -9,6 +9,8 @@ import Progressbar from './components/Progressbar';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import PortfolioSection from './components/PortfolioSection';
+import PortfolioSection2 from './components/PortfolioSection2';
+import PortfolioSection3 from './components/PortfolioSection3';
 import ProjectsSection from './components/ProjectsSection';
 import SkillsSection from './components/SkillsSection';
 import ContactSection from './components/ContactSection';
@@ -31,7 +33,11 @@ const App = () => {
         <AboutSection personalData={personalData} />
         
         {/* Section 3: Portfolio works */}
-        <PortfolioSection />
+        <div className="relative">
+          <PortfolioSection />
+          <PortfolioSection2 />
+          <PortfolioSection3 />
+        </div>
         
         {/* Section 4: School projects */}
         <ProjectsSection />

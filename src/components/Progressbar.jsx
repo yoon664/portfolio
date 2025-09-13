@@ -60,8 +60,8 @@ const Progressbar = () => {
     <div
       className="fixed bottom-0 left-0 right-0 z-[88]"
       style={{
-        filter: 'invert()',
-        mixBlendMode: 'difference',
+        // filter: 'invert()',
+        mixBlendMode: 'exclusion',
         pointerEvents: 'none',
       }}
     >
