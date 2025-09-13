@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ProjectsSection = () => {
-  // Archive 프로젝트 데이터 (이미지는 placeholder, 실제 이미지로 교체 가능)
+  // Archive 프로젝트 데이터
   const archiveItems = [
     { id: '01', image: '/img/sanrio1.png', title: 'Design' },
     { id: '02', image: '/img/sanrio3.png', title: 'Design' },
@@ -88,7 +88,7 @@ const ProjectsSection = () => {
                 </span>
               </div>
               
-              {/* Image */}
+              {/* ㅇ미지 */}
               <div className="w-full h-full aspect-square">
                 <img 
                   src={item.image}
