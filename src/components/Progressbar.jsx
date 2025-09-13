@@ -121,16 +121,6 @@ const Progressbar = () => {
                   {!section.isLast && <div className="home-ruler-main-item-line-body absolute top-0 left-0 w-full" />}
                 </div>
 
-                {section.label && (
-                  <button
-                    onClick={() => scrollToSection(section.id)}
-                    className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-medium whitespace-nowrap transition-opacity duration-300 pointer-events-auto ${
-                      activeSection === index ? 'opacity-100' : 'opacity-60'
-                    }`}
-                  >
-                    {section.label}
-                  </button>
-                )}
               </div>
             );
           })}
