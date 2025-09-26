@@ -88,7 +88,7 @@ const ProjectsSection = () => {
                 </span>
               </div>
               
-              {/* ㅇ미지 */}
+              {/* 이미지 */}
               <div className="w-full h-full aspect-square">
                 <img 
                   src={item.image}

@@ -43,7 +43,7 @@ const App = () => {
         <ProjectsSection />
         
         {/* Section 5: Skills with horizontal scroll */}
-        <SkillsSection />
+        {/* <SkillsSection /> */}
         
         {/* Section 6: Contact */}
         <ContactSection personalData={personalData} />
