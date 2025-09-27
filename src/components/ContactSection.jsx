@@ -17,10 +17,10 @@ const ContactSection = () => {
     return (
       <a 
         href={href}
-        className="group block text-center hover:opacity-80 transition-opacity"
+        className="group block hover:opacity-80 transition-opacity"
       >
-        <div className="flex flex-col">
-          <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 mb-2 opacity-60">
+        <div className="flex items-center gap-3">
+          <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 opacity-60">
             {id}
           </p>
           <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-normal">
@@ -89,17 +89,8 @@ const ContactSection = () => {
       <div className="flex flex-col justify-center items-center h-screen px-8">
         {/* Center Video/3D Element */}
         <div className="w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
-          {/* 실제 비디오 요소 대신 placeholder */}
-          <div className="w-full h-full bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gray-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <span className="text-gray-500 text-sm">Video Element</span>
-            </div>
-          </div>
+
+
         </div>
       </div>
 
@@ -125,8 +116,8 @@ const ContactSection = () => {
         </div>
 
         {/* Large Name Typography */}
-        <div className="w-full overflow-hidden mb-4">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[8rem] font-light tracking-wider text-gray-400 leading-none whitespace-nowrap text-center opacity-50">
+        <div className="w-full mb-4">
+          <h1 className="w-full text-6xl md:text-8xl lg:text-9xl xl:text-[8rem] font-light tracking-wider text-gray-400 leading-none opacity-50 text-center">
             YOOEUNJIWORKS
           </h1>
         </div>

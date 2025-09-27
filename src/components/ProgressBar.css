@@ -1,0 +1,103 @@
+/* ProgressBar.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  background-color: #1a202c;
+  min-height: 200vh;
+}
+
+.progress-ruler-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 888;
+  mix-blend-mode: exclusion; 
+  pointer-events: none;
+}
+
+.progress-ruler-wrapper {
+  width: 100%; /* 명시적으로 100% 설정 */
+  position: relative;
+  height: 4rem;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.progress-indicator {
+  position: absolute;
+  bottom: 1.6rem; 
+  left: 0;
+  width: 60px;
+  height: 5px;
+  background-color: white;
+  z-index: 10;
+  transition: transform 100ms ease-out;
+  border-radius: 10px; 
+  transform-origin: left center;
+}
+
+.ruler-main {
+  display: flex;
+  width: 100%; /* 부모 요소(wrapper)의 너비를 꽉 채움 */
+  height: 1.5rem;
+  position: relative;
+}
+
+.ruler-section {
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+}
+
+.ruler-line {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ruler-line-body {
+  --ruler-width: 1px;
+  --ruler-gap: 9px;
+  --ruler-cl: rgba(255, 255, 255, 0.4); 
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: calc(var(--ruler-width) + var(--ruler-gap)) 100%;
+  background-image: linear-gradient(90deg, var(--ruler-cl) var(--ruler-width), transparent var(--ruler-width));
+  background-repeat: repeat-x;
+}
+
+
+/* 예시 섹션 스타일 */
+#home, #brand-strategy, #tone-of-voice, #logo, #typo, #photo, #color, #another-color {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white; 
+}
+
+#home { background-color: #2d3748; }
+#brand-strategy { background-color: #3b4d61; }
+#tone-of-voice { background-color: #49637a; }
+#logo { background-color: #577993; }
+#typo { background-color: #658ebc; }
+#photo { background-color: #73a4d5; }
+#color { background-color: #81b9ee; }
+#another-color { background-color: #8fceff; }
