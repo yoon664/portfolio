@@ -18,7 +18,7 @@ const HeroSection = () => {
       antialias: true 
     });
     
-    renderer.setSize(600, 600);
+    renderer.setSize(700, 700);
     renderer.setClearColor(0x000000, 0);
     
     sceneRef.current = scene;
@@ -87,14 +87,15 @@ const HeroSection = () => {
           console.log('최대 크기:', maxSize);
           
           if (maxSize > 0) {
-            const targetSize = 8; // 나무이므로 조금 더 크게
+            const targetSize = 12; // 나무 크기를 더 크게
             const scale = targetSize / maxSize;
             model.scale.setScalar(scale);
             console.log('적용된 스케일:', scale);
           }
           
-          // 모델을 약간 앞으로 이동
+          // 모델 위치 조정
           model.position.z = 0;
+          model.position.y = -5;
           
           scene.add(model);
           
@@ -126,21 +127,21 @@ const HeroSection = () => {
       }
     };
 
-    // Ambient 조명 강화 (자연스러운 조명)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 15);
+    // Ambient 조명 (더 어둡게)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
     scene.add(ambientLight);
 
-    // 방향광 추가 (자연스러운 햇빛 효과)
-    const dir1 = new THREE.DirectionalLight(0xffffff, 25);
+    // 방향광 추가 (더 부드럽게)
+    const dir1 = new THREE.DirectionalLight(0xffffff, 2.5);
     dir1.position.set(10, 10, 10);
     scene.add(dir1);
 
-    const dir2 = new THREE.DirectionalLight(0xffffff, 10);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 1);
     dir2.position.set(-10, -10, -10);
     scene.add(dir2);
 
     // 하늘/땅 반사광 효과를 위한 Hemispherical Light
-    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 12);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
     hemi.position.set(0, 20, 0);
     scene.add(hemi);
     
@@ -179,7 +180,7 @@ const HeroSection = () => {
         <canvas 
           ref={canvasRef}
           className="w-full h-full"
-          style={{maxWidth: '600px', maxHeight: '600px'}}
+          style={{maxWidth: '700px', maxHeight: '700px'}}
         />
       </div>
 
