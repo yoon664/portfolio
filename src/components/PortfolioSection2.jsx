@@ -90,9 +90,12 @@ const PortfolioSection2 = () => {
           {/* Center - Main Image (Wider) */}
           <div className="flex-1">
             <div className="rounded-sm overflow-hidden h-full">
-              <img 
-                src="/img/amiogif.gif" 
-                alt="3D Deep-Sea Environment" 
+              <video 
+                src="/img/amio1.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
@@ -102,18 +105,24 @@ const PortfolioSection2 = () => {
           <div className="w-80 flex flex-col gap-4">
             {/* Top Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
-              <img 
-                src="/img/amiogif2.gif" 
-                alt="3D Animation GIF" 
+              <video 
+                src="/img/amio3.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
             
             {/* Bottom Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
-              <img 
-                src="/img/amiogif3.gif" 
-                alt="3D Detail Image" 
+              <video 
+                src="/img/amio2.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
