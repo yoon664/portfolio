@@ -5,7 +5,7 @@ const ProjectsSection = () => {
   const archiveItems = [
     { id: '01', image: '/img/san8.png', title: 'Design' },
     { id: '02', image: '/img/san9.png', title: 'Design' },
-    { id: '03', image: '/img/sanriogif.gif', title: 'Design' },
+    { id: '03', image: '/img/null.jpg', title: 'Design' },
     { id: '04', image: '/img/piku.png', title: 'Design' },
     { id: '05', image: '/img/miro.png', title: 'Design' },
     { id: '06', image: '/img/ill1.png', title: 'Design' },
@@ -19,13 +19,13 @@ const ProjectsSection = () => {
     { id: '14', image: '/img/pig.png', title: 'Design' },
     { id: '15', image: '/img/pho1.png', title: 'Design' },
     { id: '16', image: '/img/pho2.png', title: 'Design' },
-    { id: '17', image: '/img/sanrio3.png', title: 'Design' },
+    { id: '17', image: '/img/null.jpg', title: 'Design' },
     { id: '18', image: '/img/pho3.png', title: 'Design' },
-    { id: '19', image: '/img/sanrio1.png', title: 'Design' },
-    { id: '20', image: '/img/clean1.png', title: 'Design' },
-    { id: '21', image: '/img/clean2.png', title: 'Design' },
-    { id: '22', image: '/img/sanrio1.png', title: 'Design' },
-    { id: '23', image: '/img/sanrio3.png', title: 'Design' },
+    { id: '19', image: '/img/clean1.png', title: 'Design' },
+    { id: '20', image: '/img/clean2.png', title: 'Design' },
+    { id: '21', image: '/img/null.jpg', title: 'Design' },
+    { id: '22', image: '/img/null.jpg', title: 'Design' },
+    { id: '23', image: '/img/null.jpg', title: 'Design' },
   ];
 
   return (

@@ -16,23 +16,25 @@ const ContactSection = () => {
     const renderer = new THREE.WebGLRenderer({ 
       canvas: canvasRef.current,
       alpha: true,
-      antialias: true 
+      antialias: true,
+      preserveDrawingBuffer: true,
+      powerPreference: "high-performance"
     });
     
-    renderer.setSize(600, 600); // 크기를 600으로 변경
-    renderer.setClearColor(0x000000, 0);
-    
-    sceneRef.current = scene;
-    rendererRef.current = renderer;
+    renderer.setSize(1000, 1000);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // 고해상도 디스플레이 지원
+    renderer.setClearColor(0x000000, 0); // 완전 투명
+    renderer.shadowMap.enabled = false; // 그림자 비활성화
+    renderer.outputColorSpace = THREE.SRGBColorSpace; // 색상 공간 설정
 
-    // Cherry Tree GLTF 파일 로드
+    // Geometry Effect GLTF 파일 로드
     const loadModel = async () => {
       try {
         const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
         const loader = new GLTFLoader();
         
-        // Cherry Tree 모델 로드
-        loader.load('/models/cherry_tree/scene.gltf', (gltf) => {
+        // Geometry Effect 모델 로드
+        loader.load('/models/geometry_effect/scene.gltf', (gltf) => {
           const model = gltf.scene;
           
           // 모델의 모든 메시 확인
@@ -49,18 +51,16 @@ const ContactSection = () => {
                       mat.transparent = false;
                       mat.opacity = 1;
                       mat.roughness = 0.7;
-                      mat.metalness = 0.3;
+                      mat.metalness = 0.5;
                       mat.envMapIntensity = 1;
                     }
                   });
                 } else {
                   if (child.material.isMeshPhysicalMaterial || child.material.isMeshStandardMaterial) {
-                    // Cherry Tree에 맞는 머티리얼 설정
-                    child.material.transparent = false;
-                    child.material.opacity = 1;
-                    child.material.roughness = 0.8;
-                    child.material.metalness = 0.1;
-                    child.material.envMapIntensity = 1;
+                    // 원래 머티리얼 특성을 보존하면서 살짝만 조정
+                    // child.material.transparent = false;
+                    // child.material.opacity = 1;
+                    // 원래 색상과 텍스처를 보존
                   }
                 }
               }
@@ -79,14 +79,14 @@ const ContactSection = () => {
           const maxSize = Math.max(size.x, size.y, size.z);
           
           if (maxSize > 0) {
-            const targetSize = 12;
+            const targetSize = 12; // HeroSection과 동일하게 12로 변경
             const scale = targetSize / maxSize;
             model.scale.setScalar(scale);
           }
           
           // 모델 위치 조정
           model.position.z = 0;
-          model.position.y = -5;
+          model.position.y = 0; // 중앙으로 위치 조정
           
           scene.add(model);
           
@@ -107,37 +107,32 @@ const ContactSection = () => {
         }, 
         // 로딩 진행상황
         (progress) => {
-          console.log('Contact Cherry Tree 로딩 진행:', (progress.loaded / progress.total * 100) + '%');
+          console.log('Geometry Effect 로딩 진행:', (progress.loaded / progress.total * 100) + '%');
         },
         // 에러 처리
         (error) => {
-          console.error('Contact Cherry Tree GLTF 파일 로드 실패:', error);
+          console.error('Geometry Effect GLTF 파일 로드 실패:', error);
         });
       } catch (error) {
         console.error('GLTFLoader import 실패:', error);
       }
     };
 
-    // Ambient 조명 (더 어둡게)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+    // Ambient 조명 (더 선명하게)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 6);
     scene.add(ambientLight);
 
-    // 방향광 추가 (더 부드럽게)
-    const dir1 = new THREE.DirectionalLight(0xffffff, 2.5);
+    // 방향광 추가 (더 선명한 조명)
+    const dir1 = new THREE.DirectionalLight(0xffffff, 8);
     dir1.position.set(10, 10, 10);
+    dir1.castShadow = false; // 그림자 비활성화
     scene.add(dir1);
 
-    const dir2 = new THREE.DirectionalLight(0xffffff, 1);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 4);
     dir2.position.set(-10, -10, -10);
+    dir2.castShadow = false; // 그림자 비활성화
     scene.add(dir2);
 
-    // 하늘/땅 반사광 효과를 위한 Hemispherical Light
-    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
-    hemi.position.set(0, 20, 0);
-    scene.add(hemi);
-    
-    // 배경을 투명하게 (ContactSection 배경색이 보이도록)
-    // scene.background 설정을 제거하여 투명하게 유지
 
     camera.position.set(0, 0, 10);
 
@@ -236,12 +231,12 @@ const ContactSection = () => {
 
       {/* Main Content */}
       <div className="flex flex-col justify-center items-center h-screen px-8">
-        {/* Center Cherry Tree 3D Element */}
+        {/* Center Geometry Effect 3D Element */}
         <div className="w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
           <canvas 
             ref={canvasRef}
             className="w-full h-full"
-            style={{maxWidth: '600px', maxHeight: '600px'}}
+            style={{maxWidth: '1000px', maxHeight: '1000px'}}
           />
         </div>
       </div>
@@ -249,27 +244,28 @@ const ContactSection = () => {
       {/* Bottom Section */}
       <div className="absolute bottom-0 left-0 right-0">
         {/* Contact Links */}
-        <div className="flex justify-center gap-8 md:gap-12 mb-6 px-8">
+        <div className="flex justify-center md:gap-64 mb-5">
           <ContactLink label="EMAIL" href="mailto:yooj0264@gmail.com">
-            EMAIL
+            yooj0264@gmail.com
           </ContactLink>
           
           <ContactLink label="INSTAGRAM" href="https://instagram.com/yoon664">
-            INSTAGRAM
+            
           </ContactLink>
           
-          <ContactLink label="LINKEDIN" href="https://linkedin.com/in/yooeunji">
-            LINKEDIN
+          <ContactLink label="GITHUB" href="https://linkedin.com/in/yooeunji">
+            https://github.com/yoon664
           </ContactLink>
           
           <ContactLink label="RESUME" href="https://github.com/yoon664">
-            RESUME
+            
           </ContactLink>
         </div>
 
         {/* Large Name Typography */}
         <div className="w-full mb-4">
-          <h1 className="w-full text-6xl md:text-8xl lg:text-9xl xl:text-[8rem] font-light tracking-wider text-gray-400 leading-none opacity-50 text-center">
+          <h1 className="w-full text-6xl md:text-8xl lg:text-9xl xl:text-[8rem] font-semibold tracking-wider 
+          text-gray-400 leading-none opacity-50 text-center" style={{fontFamily: '"Lock Serif Light", serif', }}>
             YOOEUNJIWORKS
           </h1>
         </div>

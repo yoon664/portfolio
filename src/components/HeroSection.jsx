@@ -15,23 +15,31 @@ const HeroSection = () => {
     const renderer = new THREE.WebGLRenderer({ 
       canvas: canvasRef.current,
       alpha: true,
-      antialias: true 
+      antialias: true,
+      preserveDrawingBuffer: true,
+      powerPreference: "high-performance"
     });
     
-    renderer.setSize(700, 700);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(1000, 1000);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3)); // 고해상도 디스플레이 지원
+    renderer.setClearColor(0x000000, 0); // 완전 투명
+    renderer.shadowMap.enabled = false; // 그림자 비활성화
+    renderer.outputColorSpace = THREE.SRGBColorSpace; // 색상 공간 설정
+    
+    // 안개 효과 제거
+    scene.fog = null;
     
     sceneRef.current = scene;
     rendererRef.current = renderer;
 
-    // Cherry Tree GLTF 파일 로드
+    // Geometry Effect GLTF 파일 로드
     const loadModel = async () => {
       try {
         const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
         const loader = new GLTFLoader();
         
-        // Cherry Tree 모델 로드
-        loader.load('/models/cherry_tree/scene.gltf', (gltf) => {
+        // Geometry Effect 모델 로드
+        loader.load('/models/geometry_effect/scene.gltf', (gltf) => {
           const model = gltf.scene;
           
           // 모델의 모든 메시 확인
@@ -49,18 +57,16 @@ const HeroSection = () => {
                       mat.transparent = false;
                       mat.opacity = 1;
                       mat.roughness = 0.7;
-                      mat.metalness = 0.3;
+                      mat.metalness = 0.5;
                       mat.envMapIntensity = 1;
                     }
                   });
                 } else {
                   if (child.material.isMeshPhysicalMaterial || child.material.isMeshStandardMaterial) {
-                    // Cherry Tree에 맞는 머티리얼 설정
-                    child.material.transparent = false;
-                    child.material.opacity = 1;
-                    child.material.roughness = 0.8;
-                    child.material.metalness = 0.1;
-                    child.material.envMapIntensity = 1;
+                    // 원래 머티리얼 특성을 보존하면서 살짝만 조정
+                    // child.material.transparent = false;
+                    // child.material.opacity = 1;
+                    // 원래 색상과 텍스처를 보존
                   }
                 }
               }
@@ -74,7 +80,7 @@ const HeroSection = () => {
           const center = box.getCenter(new THREE.Vector3());
           const size = box.getSize(new THREE.Vector3());
           
-          console.log('Cherry Tree 모델 로드 성공!', model);
+          console.log('Geometry Effect 모델 로드 성공!', model);
           console.log('모델 크기:', size);
           console.log('모델 중심점:', center);
           console.log('바운딩 박스:', box.min, box.max);
@@ -82,12 +88,12 @@ const HeroSection = () => {
           // 모델을 원점으로 이동
           model.position.sub(center);
           
-          // 적절한 크기로 조정 (나무는 보통 더 크게)
+          // 적절한 크기로 조정
           const maxSize = Math.max(size.x, size.y, size.z);
           console.log('최대 크기:', maxSize);
           
           if (maxSize > 0) {
-            const targetSize = 12; // 나무 크기를 더 크게
+            const targetSize = 13; // ContactSection과 동일한 크기
             const scale = targetSize / maxSize;
             model.scale.setScalar(scale);
             console.log('적용된 스케일:', scale);
@@ -95,7 +101,7 @@ const HeroSection = () => {
           
           // 모델 위치 조정
           model.position.z = 0;
-          model.position.y = -5;
+          model.position.y = 0; // 중앙으로 위치 조정
           
           scene.add(model);
           
@@ -103,7 +109,7 @@ const HeroSection = () => {
           let animationId;
           const animate = () => {
             animationId = requestAnimationFrame(animate);
-            model.rotation.y += 0.005; // 나무는 더 천천히 회전
+            model.rotation.y += 0.005; // 천천히 회전
             renderer.render(scene, camera);
           };
           animate();
@@ -116,37 +122,36 @@ const HeroSection = () => {
         }, 
         // 로딩 진행상황
         (progress) => {
-          console.log('Cherry Tree 로딩 진행:', (progress.loaded / progress.total * 100) + '%');
+          console.log('Geometry Effect 로딩 진행:', (progress.loaded / progress.total * 100) + '%');
         },
         // 에러 처리
         (error) => {
-          console.error('Cherry Tree GLTF 파일 로드 실패:', error);
+          console.error('Geometry Effect GLTF 파일 로드 실패:', error);
         });
       } catch (error) {
         console.error('GLTFLoader import 실패:', error);
       }
     };
 
-    // Ambient 조명 (더 어둡게)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+    // Ambient 조명 (더 선명하게)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 6);
     scene.add(ambientLight);
 
-    // 방향광 추가 (더 부드럽게)
-    const dir1 = new THREE.DirectionalLight(0xffffff, 2.5);
+    // 방향광 추가 (더 선명한 조명)
+    const dir1 = new THREE.DirectionalLight(0xffffff, 8);
     dir1.position.set(10, 10, 10);
+    dir1.castShadow = false; // 그림자 비활성화
     scene.add(dir1);
 
-    const dir2 = new THREE.DirectionalLight(0xffffff, 1);
+    const dir2 = new THREE.DirectionalLight(0xffffff, 4);
     dir2.position.set(-10, -10, -10);
+    dir2.castShadow = false; // 그림자 비활성화
     scene.add(dir2);
 
     // 하늘/땅 반사광 효과를 위한 Hemispherical Light
-    const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0xaaaaaa, 5);
     hemi.position.set(0, 20, 0);
     scene.add(hemi);
-    
-    // 배경
-    scene.background = new THREE.Color(0x000000);
 
     camera.position.set(0, 0, 10);
 
@@ -175,12 +180,12 @@ const HeroSection = () => {
         </p>
       </div>
 
-      {/* 3D Cherry Tree 모델 */}
+      {/* 3D Geometry Effect 모델 */}
       <div className="absolute inset-0 flex items-center justify-center z-0">
         <canvas 
           ref={canvasRef}
           className="w-full h-full"
-          style={{maxWidth: '700px', maxHeight: '700px'}}
+          style={{maxWidth: '1000px', maxHeight: '1000px'}}
         />
       </div>
 
