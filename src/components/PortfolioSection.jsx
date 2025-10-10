@@ -102,9 +102,12 @@ const PortfolioSection = () => {
           <div className="w-80 flex flex-col gap-4">
             {/* Top Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
-              <img 
-                src="/img/sanriogif.gif" 
-                alt="3D Animation GIF" 
+              <video 
+                src="/img/sanrio2.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>

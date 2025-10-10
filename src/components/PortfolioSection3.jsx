@@ -102,18 +102,24 @@ const PortfolioSection3 = () => {
           <div className="w-80 flex flex-col gap-4">
             {/* Top Image */}
             <div className="flex-1 rounded-sm overflow-hidden">
-              <img 
-                src="/img/hanhwagif.gif" 
-                alt="3D Animation GIF" 
+              <video 
+                src="/img/hanhwa3.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
             
-            {/* Bottom Image */}
+            {/* Bottom Video */}
             <div className="flex-1 rounded-sm overflow-hidden">
-              <img 
-                src="/img/hanhwa2.png" 
-                alt="3D Detail Image" 
+              <video 
+                src="/img/hanhwa2.mp4" 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
                 className="w-full h-full object-cover"
               />
             </div>
