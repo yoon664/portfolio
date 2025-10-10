@@ -42,29 +42,29 @@ const AboutSection = ({ personalData }) => {
             {/* Notebook holes on the left - aligned with left area */}
             <div className="absolute left-3 top-3 bottom-3 flex flex-col justify-between z-30">
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#d4a948',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
-                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+                backgroundColor: '#1C212C',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: '#1C212C'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#d4a948',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
-                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+                backgroundColor: '#212633',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: '#212633'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#d4a948',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
-                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+                backgroundColor: '#272E3B',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: '#272E3B'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#d4a948',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
-                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+                backgroundColor: '#29313D',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: '#29313D'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#d4a948',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
-                background: 'radial-gradient(circle, #b8903c 20%, #d4a948 50%)'
+                backgroundColor: '#3A4254',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.8), inset 0 2px 2px rgba(0,0,0,0.6), 0 0 2px rgba(0,0,0,0.3)',
+                background: '#3A4254'
               }}></div>
             </div>
             
@@ -76,15 +76,24 @@ const AboutSection = ({ personalData }) => {
                 <span className="text-xs uppercase jetbrains">{current.category}</span>
               </div>
               
-              {/* Left middle section - rotating images area */}
-              <div className="flex-1 w-full">
-                {/* This space is reserved for rotating images to be added later */}
+              {/* Left middle section - profile image area */}
+              <div className="flex-1 w-full flex items-center justify-center p-4">
+                <div className="w-full h-full flex items-center justify-center pt-3">
+                  <img 
+                    src="/img/eunji.png" 
+                    alt="Yoo Eunji" 
+                    className="w-full h-full object-cover rounded-md shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
+                    }}
+                  />
+                </div>
               </div>
               
-              {/* Left bottom section - slide counter - absolute positioning for bottom */}
-              <div className="w-full py-3 px-4 flex justify-between items-center">
+              {/* Left bottom section - slide counter */}
+              <div className="w-full pt-8 px-4 flex justify-between items-center">
                 <div className="w-3 h-3 bg-black"></div>
-                <span className="text-xs jetbrains">{current.number} / 06</span>
+                <span className="text-xs jetbrains">{current.number} / 04</span>
                 <div className="w-3 h-3 bg-black"></div>
               </div>
             </div>
@@ -100,12 +109,12 @@ const AboutSection = ({ personalData }) => {
               </div>
               
               {/* Right upper section - name + "does" */}
-              <div className="py-4">
+              <div className="py-1 ">
                 <div className="text-left relative">
-                  <h1 className="text-6xl font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
+                  <h1 className="text-6xl ml-4 font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
                     Yoo Eunji
                   </h1>
-                  <h2 className="text-6xl font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
+                  <h2 className="text-6xl ml-4 font-light leading-none" style={{fontFamily: '"Lock Serif Light", serif', fontSize: '80px', lineHeight: '80px'}}>
                     does
                   </h2>
                   {/* 점선 after title */}
@@ -114,7 +123,7 @@ const AboutSection = ({ personalData }) => {
               </div>
               
               {/* Right middle section - work category */}
-              <div className="flex-1 flex items-center justify-center relative">
+              <div className="flex-1 pt-6 pb-3 flex items-center justify-center relative">
                 <div className="flex items-center space-x-8">
                   <span className="text-lg font-medium">&lt;</span>
                   <div className="text-center">
@@ -139,7 +148,7 @@ const AboutSection = ({ personalData }) => {
                 </div>
                 
                 {/* Location info */}
-                <div className="text-xs py-4 px-4 jetbrains flex flex-row justify-between w-full">
+                <div className="text-xs pt-1 px-4 jetbrains flex flex-row justify-between w-full">
                   <p className="uppercase">CURRENTLY BASED IN</p>
                   <p className="uppercase">SAVANNAH, GA</p>
                   <p className="uppercase">32.0809° N, 81.0912° W</p>
@@ -165,28 +174,28 @@ const AboutSection = ({ personalData }) => {
             <div className="absolute left-3 top-3 bottom-3 flex flex-col justify-between z-30">
               <div className="w-3 h-3 rounded-full" style={{
                 backgroundColor: 'transparent',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.5)',
-                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.5)',
+                background: '#1C212C'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#4a4a4a',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
-                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+                backgroundColor: '#212633',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: '#212633'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#4a4a4a',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
-                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+                backgroundColor: '#272E3B',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: '#272E3B'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#4a4a4a',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
-                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+                backgroundColor: '#29313D',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: '#29313D'
               }}></div>
               <div className="w-3 h-3 rounded-full" style={{
-                backgroundColor: '#4a4a4a',
-                boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
-                background: 'radial-gradient(circle, #2a2a2a 20%, #4a4a4a 50%)'
+                backgroundColor: '#2E3442',
+                // boxShadow: 'inset 0 0 4px rgba(0,0,0,0.9), inset 0 2px 2px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.1)',
+                background: '#2E3442'
               }}></div>
             </div>
             
