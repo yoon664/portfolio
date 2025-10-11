@@ -35,7 +35,8 @@ const ProgressBar = () => {
   const indicatorWidth = 60; // CSS에 정의된 이동 바의 너비
 
   return (
-    <div className="progress-ruler-container">
+    // ▼▼▼ 여기에 hidden md:block 클래스를 추가합니다 ▼▼▼
+    <div className="progress-ruler-container hidden md:block">
       <div className="progress-ruler-wrapper">
         {/* 작은 이동 바 */}
         <div
