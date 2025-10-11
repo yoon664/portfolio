@@ -8,7 +8,7 @@ const ContactSection = () => {
   const modelRef = useRef(null);
   const originalModelSize = useRef(null);
 
-  // 3D 모델 로직
+  // 3D 모델 렌더링 로직 (수정 없음)
   useEffect(() => {
     if (!canvasRef.current) return;
 
@@ -64,8 +64,10 @@ const ContactSection = () => {
     loadModel();
 
     const handleResize = () => {
-      if (!rendererRef.current || !cameraRef.current || !canvasRef.current.parentElement) return;
-      const container = canvasRef.current.parentElement;
+      const canvas = canvasRef.current;
+      if (!rendererRef.current || !cameraRef.current || !canvas.parentElement) return;
+
+      const container = canvas.parentElement;
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width, height);
@@ -75,7 +77,7 @@ const ContactSection = () => {
       if (modelRef.current && originalModelSize.current > 0) {
         const model = modelRef.current;
         const maxSize = originalModelSize.current;
-        const targetSize = window.innerWidth < 768 ? 9 : 12;
+        const targetSize = window.innerWidth < 768 ? 9 : 15;
         const scale = targetSize / maxSize;
         model.scale.setScalar(scale);
       }
@@ -85,7 +87,9 @@ const ContactSection = () => {
     const animate = () => {
       animationId = requestAnimationFrame(animate);
       if (modelRef.current) modelRef.current.rotation.y += 0.005;
-      renderer.render(scene, camera);
+      if (rendererRef.current && scene && cameraRef.current) {
+        rendererRef.current.render(scene, cameraRef.current);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -95,50 +99,31 @@ const ContactSection = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationId);
-      renderer.dispose();
+      if (rendererRef.current) rendererRef.current.dispose();
     };
   }, []);
 
-  const topCategories = [
-    { id: "01", name: "Motion Design" },
-    { id: "02", name: "Brand Design" },
-    { id: "03", name: "Editorial Design" }
-  ];
-  const bottomCategories = [
-    { id: "04", name: "Photography" },
-    { id: "05", name: "Illustration" },
-    { id: "06", name: "3D Tech" }
-  ];
+  const topCategories = [ { id: "01", name: "Motion Design" }, { id: "02", name: "Brand Design" }, { id: "03", name: "Editorial Design" } ];
+  const bottomCategories = [ { id: "04", name: "Photography" }, { id: "05", name: "Illustration" }, { id: "06", name: "3D Tech" } ];
 
-  const CategoryLink = ({ id, name }) => (
-    <a href="#" className="group block hover:opacity-80 transition-opacity">
-      <div className="flex items-center gap-3">
-        <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 opacity-60">{id}</p>
-        <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-normal">{name}</h2>
-      </div>
-    </a>
-  );
-
-  const ContactLink = ({ label, href, children }) => (
-    <a 
-      href={href}
-      className="group relative inline-block cursor-pointer py-1"
-      target={href.startsWith('http') ? "_blank" : "_self"}
-      rel="noopener noreferrer"
-    >
-      <div className="flex gap-2 items-center">
-        <div className="text-xs text-gray-500 uppercase tracking-widest">{label}</div>
-        <div className="text-gray-300 text-xs">{children}</div>
-      </div>
-    </a>
-  );
+  const CategoryLink = ({ id, name }) => ( <a href="#" className="group block hover:opacity-80 transition-opacity"> <div className="flex items-center gap-3"> <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 opacity-60">{id}</p> <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-normal">{name}</h2> </div> </a> );
+  const ContactLink = ({ label, href, children }) => ( <a href={href} className="group relative inline-block cursor-pointer py-1" target={href.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer"> <div className="flex gap-2 items-center"> <div className="text-xs text-gray-500 uppercase tracking-widest">{label}</div> <div className="text-gray-300 text-xs">{children}</div> </div> </a> );
 
   return (
-    <section id="contact" className="min-h-screen md:min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: '#202020' }}>
+    <section id="contact" className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: '#202020' }}>
       
-      {/* 데스크탑 버전 */}
-      <div className="hidden md:block">
-        <div className="absolute top-8 left-0 right-0 z-10">
+      {/* --- 1. Canvas 컨테이너 (모든 화면 크기에서 공유) --- */}
+      {/* 반응형 클래스를 통해 모바일과 데스크탑에서 위치, 크기, 투명도를 다르게 설정 */}
+      <div className="absolute z-0 
+                      w-80 h-80 -top-16 -right-20 opacity-50 
+                      md:w-96 md:h-96 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:opacity-100">
+          <canvas ref={canvasRef} className="w-full h-full" />
+      </div>
+
+      {/* --- 2. 데스크탑 버전 콘텐츠 --- */}
+      <div className="hidden md:flex flex-col justify-between min-h-screen relative z-10">
+        {/* Top Categories */}
+        <div className="pt-8">
           <div className="flex justify-center gap-12 md:gap-16 lg:gap-20 mb-8">
             {topCategories.map((cat) => <CategoryLink key={cat.id} {...cat} />)}
           </div>
@@ -146,13 +131,13 @@ const ContactSection = () => {
             {bottomCategories.map((cat) => <CategoryLink key={cat.id} {...cat} />)}
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center h-screen px-8">
-          <div className="w-96 h-96 flex items-center justify-center">
-            <canvas ref={canvasRef} className="w-full h-full" />
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0">
-          <div className="flex justify-between mb-5 max-w-7xl mx-auto">
+        
+        {/* Spacer for middle content */}
+        <div className="flex-grow"></div>
+
+        {/* Bottom Section */}
+        <div>
+          <div className="flex justify-between mb-5 max-w-7xl mx-auto px-8">
             <ContactLink label="EMAIL" href="mailto:yooj0264@gmail.com">yooj0264@gmail.com</ContactLink>
             <ContactLink label="INSTAGRAM" href="https://instagram.com/yoon664" />
             <ContactLink label="GITHUB" href="https://github.com/yoon664">https://github.com/yoon664</ContactLink>
@@ -169,23 +154,18 @@ const ContactSection = () => {
         </div>
       </div>
 
-
-      <div className="md:hidden flex flex-col justify-between min-h-screen p-8">
-
-        <div className="relative">
-          {/* 3D 모델 */}
-          <div className="absolute -top-16 -right-20 w-80 h-80 z-0 opacity-50">
-            <canvas ref={canvasRef} className="w-full h-full" />
-          </div>
-          
-          {/* 카테고리  */}
-          <div className="relative z-10 space-y-4">
-            {[...topCategories, ...bottomCategories].map((cat) => <CategoryLink key={cat.id} {...cat} />)}
-          </div>
+      {/* --- 3. 모바일 버전 콘텐츠 --- */}
+      <div className="md:hidden flex flex-col min-h-screen p-8 relative z-10">
+        {/* Top Categories */}
+        <div className="space-y-4">
+          {[...topCategories, ...bottomCategories].map((cat) => <CategoryLink key={cat.id} {...cat} />)}
         </div>
         
-        {/* 하단 */}
-        <div className="w-full flex flex-col items-start space-y-8 mt-12">
+        {/* Spacer - 이 요소가 남는 공간을 모두 차지하여 하단 콘텐츠를 아래로 밀어냄 */}
+        <div className="flex-grow"></div> 
+        
+        {/* Bottom Content */}
+        <div className="w-full flex flex-col items-start space-y-8">
           <div className="flex flex-col items-start">
             <ContactLink label="EMAIL" href="mailto:yooj0264@gmail.com">yooj0264@gmail.com</ContactLink>
             <ContactLink label="GITHUB" href="https://github.com/yoon664">https://github.com/yoon664</ContactLink>
