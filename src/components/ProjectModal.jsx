@@ -6,7 +6,6 @@ const ProjectModal = ({ project, onClose }) => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex items-center justify-center p-16 animate-fade-in">
       <div className="absolute top-8 right-8">
-
         <button
           onClick={onClose}
           className="relative group overflow-hidden px-4 py-2 text-sm jetbrains uppercase tracking-wider text-gray-500"
@@ -14,7 +13,7 @@ const ProjectModal = ({ project, onClose }) => {
           {/* 기본 상태 텍스트 */}
           <span className="block">Close</span>
 
-          {/* 호버 효과 */}
+          {/* 호버 시 나타나는 배경과 텍스트 */}
           <div className="absolute bottom-0 left-0 right-0 h-0 bg-black text-white overflow-hidden transition-all duration-300 ease-out group-hover:h-full">
             <span className="absolute bottom-0 left-0 right-0 block px-4 py-2">
               Close
@@ -23,9 +22,9 @@ const ProjectModal = ({ project, onClose }) => {
         </button>
       </div>
 
-      {/* 컨텐츠 영역 (2단 레이아웃) */}
+      {/* 컨텐츠 영역 (2단 레이웃) */}
       <div className="w-full h-full flex items-center gap-16">
-        {/* 왼쪽- 텍스트 정보 */}
+        {/* 왼쪽: 텍스트 정보 */}
         <div className="w-1/2 h-full flex flex-col justify-between py-8">
           <div>
             <h1 className="text-9xl font-thin text-gray-800">
@@ -41,13 +40,16 @@ const ProjectModal = ({ project, onClose }) => {
           </div>
         </div>
 
-        {/* 오른쪽- 이미지 */}
+        {/* 오른쪽: 이미지 */}
         <div className="w-1/2 h-full flex items-center justify-center p-4">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="max-w-full max-h-full object-contain"
-          />
+
+          <div className="w-full aspect-square relative">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
       </div>
     </div>
