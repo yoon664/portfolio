@@ -31,13 +31,10 @@ const ProjectsSection = () => {
 
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // null.jpg인 경우 팝업이 뜨지 않도록
   const handleProjectClick = (project) => {
-    // 클릭된 프로젝트의 이미지 경로에 'null.jpg'가 포함되어 있으면 함수를 즉시 종료
     if (project.image.includes('null.jpg')) {
       return;
     }
-    // 그렇지 않으면 팝업을 띄움
     setSelectedProject(project);
   };
 
@@ -52,14 +49,17 @@ const ProjectsSection = () => {
         className="w-full min-h-screen bg-white flex flex-col overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
-        {/* Header */}
-        <header className="flex justify-between items-start p-8 pb-6">
-          <div>
-            <h1 className="text-5xl md:text-6xl font-light" style={{ color: '#212121' }}>
+        <header className="flex flex-col md:flex-row md:justify-between items-start p-8 pb-6">
+          <div className="mb-1 md:mb-0">
+            <h1 className="text-5xl md:text-6xl font-light mb-4 md:mb-0" style={{ color: '#212121' }}>
               Archive
             </h1>
+            <p className="text-sm jetbrains uppercase tracking-wide leading-relaxed md:hidden" style={{ color: '#212121' }}>
+              A CURATED STASH OF PLAYFUL, BITE-SIZED CREATIONS<br />
+              TOO SMALL FOR A PROJECT, BUT TOO GOOD TO KEEP HIDDEN.
+            </p>
           </div>
-          <div className="max-w-md text-left">
+          <div className="hidden md:block max-w-md text-left">
             <p className="text-sm jetbrains uppercase tracking-wide leading-relaxed" style={{ color: '#212121' }}>
               A CURATED STASH OF PLAYFUL, BITE-SIZED CREATIONS<br />
               TOO SMALL FOR A PROJECT, BUT TOO GOOD TO KEEP HIDDEN.
@@ -67,32 +67,51 @@ const ProjectsSection = () => {
           </div>
         </header>
 
-        {/* Main Grid */}
-        <div className="flex-1 p-8">
-          <div className="grid grid-cols-8 gap-8 h-full">
-            {archiveItems.map((item) => (
-              <div 
-                key={item.id}
-                // [수정] null.jpg가 아닐 때만 cursor-pointer 클래스 적용
-                className={`relative overflow-hidden group ${!item.image.includes('null.jpg') && 'cursor-pointer'}`}
-                onClick={() => handleProjectClick(item)}
-                tabIndex={0}
-              >
-                <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
-                  <span className="text-xs jetbrains" style={{ color: '#212121' }}>
-                    {item.id}
-                  </span>
+        <div className="flex-1">
+          {/* --- ▼▼▼ 모바일/태블릿 뷰 (lg 이하) --- */}
+          <div className="lg:hidden border-t border-dashed border-gray-400">
+            <div className="grid grid-cols-3">
+              {/* slice(0, 12)를 사용하여 12개 아이템만 렌더링 */}
+              {archiveItems.slice(0, 12).map((item) => (
+                <div 
+                  key={item.id}
+                  className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${!item.image.includes('null.jpg') && 'cursor-pointer'}`}
+                  onClick={() => handleProjectClick(item)}
+                  tabIndex={0}
+                >
+                  <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
+                    <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+                  </div>
+                  <div className="w-full h-full aspect-square">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
+                  </div>
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 </div>
-                <div className="w-full h-full aspect-square">
-                  <img 
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"
-                  />
+              ))}
+            </div>
+          </div>
+
+          {/* --- ▼▼▼ 데스크탑 뷰 (lg 이상) --- */}
+          <div className="hidden lg:block border-t border-dashed border-gray-400">
+            <div className="grid grid-cols-8">
+              {/* 모든 아이템을 렌더링 */}
+              {archiveItems.map((item) => (
+                <div 
+                  key={item.id}
+                  className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${!item.image.includes('null.jpg') && 'cursor-pointer'}`}
+                  onClick={() => handleProjectClick(item)}
+                  tabIndex={0}
+                >
+                  <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
+                    <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+                  </div>
+                  <div className="w-full h-full aspect-square">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
+                  </div>
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 </div>
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
