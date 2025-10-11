@@ -56,7 +56,7 @@ const AboutSection = ({ personalData }) => {
               </div>
               <div className="flex-1 w-full flex items-center justify-center p-4">
                 <div className="w-full h-full flex items-center justify-center pt-3">
-                  <img src="/img/eunji.png" alt="Yoo Eunji" className="w-full h-full object-cover rounded-md shadow-lg" style={{ boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
+                  <img src="img/eunji.png" alt="Yoo Eunji" className="w-full h-full object-cover rounded-md shadow-lg" style={{ boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }} />
                 </div>
               </div>
               <div className="w-full pt-8 px-4 flex justify-between items-center">

@@ -93,7 +93,7 @@ const PortfolioSection = () => {
             <div className="flex-1">
               <div className="rounded-sm overflow-hidden h-full">
                 <img 
-                  src="/img/sanrio1.png" 
+                  src="img/sanrio1.png" 
                   alt="Sanrio main" 
                   className="w-full h-full object-cover"
                 />
@@ -104,7 +104,7 @@ const PortfolioSection = () => {
             <div className="w-80 flex flex-col gap-4">
               <div className="flex-1 rounded-sm overflow-hidden">
                 <video 
-                  src="/img/sanrio2.mp4" 
+                  src="img/sanrio2.mp4" 
                   autoPlay 
                   loop 
                   muted 
@@ -114,7 +114,7 @@ const PortfolioSection = () => {
               </div>
               <div className="flex-1 rounded-sm overflow-hidden">
                 <img 
-                  src="/img/sanrio3.png" 
+                  src="img/sanrio3.png" 
                   alt="Sanrio detail" 
                   className="w-full h-full object-cover"
                 />

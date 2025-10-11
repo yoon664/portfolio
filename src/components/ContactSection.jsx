@@ -32,7 +32,7 @@ const ContactSection = () => {
         const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
         const loader = new GLTFLoader();
         
-        loader.load('/models/geometry_effect/scene.gltf', (gltf) => {
+        loader.load('models/geometry_effect/scene.gltf', (gltf) => {
           const model = gltf.scene;
           modelRef.current = model;
 

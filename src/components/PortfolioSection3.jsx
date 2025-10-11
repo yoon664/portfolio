@@ -89,7 +89,7 @@ const PortfolioSection3 = () => {
             <div className="flex-1">
               <div className="rounded-sm overflow-hidden h-full">
                 <img 
-                  src="/img/hanhwa.png" 
+                  src="img/hanhwa.png" 
                   alt="Hanhwa main" 
                   className="w-full h-full object-cover"
                 />
@@ -99,7 +99,7 @@ const PortfolioSection3 = () => {
             <div className="w-80 flex flex-col gap-4">
               <div className="flex-1 rounded-sm overflow-hidden">
                 <video 
-                  src="/img/hanhwa3.mp4" 
+                  src="img/hanhwa3.mp4" 
                   autoPlay 
                   loop 
                   muted 
@@ -109,7 +109,7 @@ const PortfolioSection3 = () => {
               </div>
               <div className="flex-1 rounded-sm overflow-hidden">
                 <video 
-                  src="/img/hanhwa2.mp4" 
+                  src="img/hanhwa2.mp4" 
                   autoPlay 
                   loop 
                   muted 
