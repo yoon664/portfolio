@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectModal from './ProjectModal'; // 방금 만든 모달 컴포넌트를 import 합니다.
+import ProjectModal from './ProjectModal';
 
 const ProjectsSection = () => {
   const archiveItems = [
@@ -26,18 +26,21 @@ const ProjectsSection = () => {
     { id: '21', image: '/img/null.jpg', title: 'Motion Graphics', year: '2023', description: 'An animated logo reveal for a tech startup.' },
     { id: '22', image: '/img/null.jpg', title: 'Social Media Campaign', year: '2024', description: 'Visual assets for a social media marketing campaign.' },
     { id: '23', image: '/img/null.jpg', title: 'Book Cover Design', year: '2022', description: 'Cover design for a fantasy novel.' },
-    { id: '24', image: '/img/null.jpg', title: 'Abstract Photography', year: '2024', description: 'Exploring textures and light through abstract photography.' },
+    { id: '24', image: '/img/pho4.png', title: 'Abstract Photography', year: '2024', description: 'Exploring textures and light through abstract photography.' },
   ];
 
-  // 팝업 상태 관리를 위한 state
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // 이미지 클릭 시 선택된 프로젝트 정보를 state에 저장하는 함수
+  // [수정] null.jpg인 경우 팝업이 뜨지 않도록 조건 추가
   const handleProjectClick = (project) => {
+    // 클릭된 프로젝트의 이미지 경로에 'null.jpg'가 포함되어 있으면 함수를 즉시 종료
+    if (project.image.includes('null.jpg')) {
+      return;
+    }
+    // 그렇지 않으면 팝업을 띄움
     setSelectedProject(project);
   };
 
-  // 팝업을 닫는 함수
   const handleCloseModal = () => {
     setSelectedProject(null);
   };
@@ -68,10 +71,10 @@ const ProjectsSection = () => {
         <div className="flex-1 p-8">
           <div className="grid grid-cols-8 gap-8 h-full">
             {archiveItems.map((item) => (
-              // 각 아이템에 onClick 이벤트 핸들러 추가
               <div 
                 key={item.id}
-                className="relative overflow-hidden group cursor-pointer"
+                // [수정] null.jpg가 아닐 때만 cursor-pointer 클래스 적용
+                className={`relative overflow-hidden group ${!item.image.includes('null.jpg') && 'cursor-pointer'}`}
                 onClick={() => handleProjectClick(item)}
                 tabIndex={0}
               >
@@ -90,12 +93,10 @@ const ProjectsSection = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
               </div>
             ))}
-
           </div>
         </div>
       </section>
 
-      {/* selectedProject가 있을 때만 ProjectModal을 렌더링 */}
       {selectedProject && (
         <ProjectModal project={selectedProject} onClose={handleCloseModal} />
       )}
