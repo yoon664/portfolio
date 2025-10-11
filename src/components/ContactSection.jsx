@@ -106,21 +106,20 @@ const ContactSection = () => {
   const topCategories = [ { id: "01", name: "Motion Design" }, { id: "02", name: "Brand Design" }, { id: "03", name: "Editorial Design" } ];
   const bottomCategories = [ { id: "04", name: "Photography" }, { id: "05", name: "Illustration" }, { id: "06", name: "3D Tech" } ];
 
-  const CategoryLink = ({ id, name }) => ( <a href="#" className="group block hover:opacity-80 transition-opacity"> <div className="flex items-center gap-3"> <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 opacity-60">{id}</p> <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-normal">{name}</h2> </div> </a> );
+  const CategoryLink = ({ id, name }) => ( <a className="group block hover:opacity-80 transition-opacity"> <div className="flex items-center gap-3"> <p className="text-white text-sm font-mono uppercase tracking-normal leading-6 opacity-60">{id}</p> <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light leading-tight tracking-normal">{name}</h2> </div> </a> );
   const ContactLink = ({ label, href, children }) => ( <a href={href} className="group relative inline-block cursor-pointer py-1" target={href.startsWith('http') ? "_blank" : "_self"} rel="noopener noreferrer"> <div className="flex gap-2 items-center"> <div className="text-xs text-gray-500 uppercase tracking-widest">{label}</div> <div className="text-gray-300 text-xs">{children}</div> </div> </a> );
 
   return (
     <section id="contact" className="min-h-screen text-white relative overflow-hidden" style={{ backgroundColor: '#202020' }}>
       
-      {/* --- 1. Canvas 컨테이너 (모든 화면 크기에서 공유) --- */}
-      {/* 반응형 클래스를 통해 모바일과 데스크탑에서 위치, 크기, 투명도를 다르게 설정 */}
+
       <div className="absolute z-0 
                       w-80 h-80 -top-16 -right-20 opacity-50 
                       md:w-96 md:h-96 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:opacity-100">
           <canvas ref={canvasRef} className="w-full h-full" />
       </div>
 
-      {/* --- 2. 데스크탑 버전 콘텐츠 --- */}
+
       <div className="hidden md:flex flex-col justify-between min-h-screen relative z-10">
         {/* Top Categories */}
         <div className="pt-8">
@@ -154,14 +153,14 @@ const ContactSection = () => {
         </div>
       </div>
 
-      {/* --- 3. 모바일 버전 콘텐츠 --- */}
+
       <div className="md:hidden flex flex-col min-h-screen p-8 relative z-10">
         {/* Top Categories */}
         <div className="space-y-4">
           {[...topCategories, ...bottomCategories].map((cat) => <CategoryLink key={cat.id} {...cat} />)}
         </div>
         
-        {/* Spacer - 이 요소가 남는 공간을 모두 차지하여 하단 콘텐츠를 아래로 밀어냄 */}
+
         <div className="flex-grow"></div> 
         
         {/* Bottom Content */}
