@@ -146,15 +146,15 @@ const ContactSection = () => {
   }, []);
 
   const topCategories = [
-    { id: "01", name: "Motion Design", href: "./works-motion" },
-    { id: "02", name: "Brand Design", href: "./works-branding" },
-    { id: "03", name: "Editorial Design", href: "./works-editorial" }
+    { id: "01", name: "Motion Design",  },
+    { id: "02", name: "Brand Design", },
+    { id: "03", name: "Editorial Design",  }
   ];
 
   const bottomCategories = [
-    { id: "04", name: "Photography", href: "./works-photoworks" },
-    { id: "05", name: "Illustration", href: "./works-illustration" },
-    { id: "06", name: "3D Tech", href: "./works-3d-tech" }
+    { id: "04", name: "Photography",  },
+    { id: "05", name: "Illustration", },
+    { id: "06", name: "3D Tech", }
   ];
 
   const CategoryLink = ({ id, name, href }) => {
