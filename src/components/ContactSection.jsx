@@ -185,16 +185,16 @@ const ContactSection = () => {
       >
         <div className="relative overflow-hidden">
           {/* Default state */}
-          <div className="transition-transform duration-300 group-hover:-translate-y-full">
-            <div className="text-xs text-gray-500 uppercase tracking-widest mb-1">{label}</div>
-            <div className="text-gray-300 text-sm">{children}</div>
+          <div className="transition-transform duration-300 flex gap-2 items-center justify-center">
+            <div className="text-xs text-gray-500 uppercase tracking-widest">{label}</div>
+            <div className="text-gray-300 text-xs">{children}</div>
           </div>
           
           {/* Hover state */}
-          <div className="absolute inset-0 bg-white text-black px-2 py-1 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+          {/* <div className="absolute inset-0 bg-white text-black px-2 py-1 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
             <div className="text-xs uppercase tracking-widest mb-1">{label}</div>
             <div className="text-sm font-medium">{children}</div>
-          </div>
+          </div> */}
         </div>
       </a>
     );
@@ -244,7 +244,7 @@ const ContactSection = () => {
       {/* Bottom Section */}
       <div className="absolute bottom-0 left-0 right-0">
         {/* Contact Links */}
-        <div className="flex justify-center md:gap-64 mb-5">
+        <div className="flex justify-between mb-5 max-w-7xl mx-auto">
           <ContactLink label="EMAIL" href="mailto:yooj0264@gmail.com">
             yooj0264@gmail.com
           </ContactLink>
@@ -266,7 +266,7 @@ const ContactSection = () => {
         <div className="w-full mb-4">
           <h1 className="w-full text-6xl md:text-8xl lg:text-9xl xl:text-[8rem] font-semibold tracking-wider 
           text-gray-400 leading-none opacity-50 text-center" style={{fontFamily: '"Lock Serif Light", serif', }}>
-            YOOEUNJIWORKS
+            YOOEUNJI WORKS
           </h1>
         </div>
 
