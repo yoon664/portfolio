@@ -21,12 +21,7 @@ const PortfolioSection = () => {
           </h2>
         </div>
         
-        <button className="bg-black text-white px-6 py-3 text-xs font-medium tracking-wider uppercase hover:bg-gray-800 transition-colors duration-300 group jetbrains">
-          <span className="flex items-center gap-2">
-            SEE ALL WORKS 
-            <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </span>
-        </button>
+
       </header>
 
       {/* Main Content */}
@@ -79,12 +74,18 @@ const PortfolioSection = () => {
               The project is defined by its soft pastel design and fluid motion, presented as a heartfelt, 
               fan-page-style portfolio that showcases a genuine passion for the characters.
             </p>
-            <button className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" style={{ color: '#212121' }}>
+            <a 
+              href="https://yoon664.github.io/sanrio_po/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains inline-block" 
+              style={{ color: '#212121' }}
+            >
               <span className="flex items-center gap-2">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
-            </button>
+            </a>
           </div>
 
           {/* Center - Main Image (Wider) */}

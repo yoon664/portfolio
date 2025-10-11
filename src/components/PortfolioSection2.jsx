@@ -20,13 +20,7 @@ const PortfolioSection2 = () => {
             FEATURED WORK 02
           </h2>
         </div>
-        
-        <button className="bg-black text-white px-6 py-3 text-xs font-medium tracking-wider uppercase hover:bg-gray-800 transition-colors duration-300 group jetbrains">
-          <span className="flex items-center gap-2">
-            SEE ALL WORKS 
-            <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </span>
-        </button>
+
       </header>
 
       {/* Main Content */}
@@ -79,12 +73,18 @@ const PortfolioSection2 = () => {
               The site features an interactive design where content dynamically appears as users scroll, 
               allowing them to explore the brand story, product lineup, and unique ingredients in an engaging and immersive way.
             </p>
-            <button className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" style={{ color: '#fffff' }}>
+            <a 
+              href="https://yoon664.github.io/amio/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains inline-block" 
+              style={{ color: '#212121' }}
+            >
               <span className="flex items-center gap-2">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
-            </button>
+            </a>
           </div>
 
           {/* Center - Main Image (Wider) */}

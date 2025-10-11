@@ -21,12 +21,6 @@ const PortfolioSection3 = () => {
           </h2>
         </div>
         
-        <button className="bg-black text-white px-6 py-3 text-xs font-medium tracking-wider uppercase hover:bg-gray-800 transition-colors duration-300 group jetbrains">
-          <span className="flex items-center gap-2">
-            SEE ALL WORKS 
-            <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </span>
-        </button>
       </header>
 
       {/* Main Content */}
