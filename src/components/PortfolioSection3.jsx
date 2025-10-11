@@ -73,12 +73,18 @@ const PortfolioSection3 = () => {
               The project is defined by its soft pastel design and fluid motion, presented as a heartfelt, 
               fan-page-style portfolio that showcases a genuine passion for the characters.
             </p>
-            <button className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" style={{ color: '#212121' }}>
+            <a 
+              href="https://yoon664.github.io/han-eagle/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains inline-block" 
+              style={{ color: '#212121' }}
+            >
               <span className="flex items-center gap-2">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
-            </button>
+            </a>
           </div>
 
           {/* Center - Main Image (Wider) */}
