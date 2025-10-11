@@ -20,7 +20,6 @@ import { personalData } from './data';
 
 const App = () => {
   return (
-    //overflow-x-hidden 클래스 제거
     <div className="text-white font-mono relative">
       <Header />
       <Progressbar showPercentage={false} />
