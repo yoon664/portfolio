@@ -8,30 +8,30 @@ const ProjectsSection = () => {
     { id: '03', image: '/img/null.jpg', title: 'Editorial Spread', year: '2023', description: 'A two-page magazine spread focusing on dynamic layout and typography.' },
     { id: '04', image: '/img/piku.png', title: 'Mobile App UI', year: '2024', description: 'User interface design for a productivity mobile application.' },
     { id: '05', image: '/img/miro.png', title: 'Brand Identity', year: '2023', description: 'Complete brand identity design for a local coffee shop.' },
-    { id: '06', image: '/img/ill1.png', title: 'Vector Illustration', year: '2022', description: 'A series of detailed vector illustrations for a children\'s book.' },
-    { id: '07', image: '/img/ill2.png', title: 'Iconography Set', year: '2023', description: 'A custom set of 30 icons designed for a web application.' },
-    { id: '08', image: '/img/ill3.png', title: 'Poster Design', year: '2024', description: 'Promotional poster design for a music festival.' },
-    { id: '09', image: '/img/ill4.png', title: 'Character Sketch', year: '2022', description: 'Initial character sketches and concept art for an animation project.' },
+    { id: '06', image: '/img/ill1.png', title: '3D Vector Illustration', year: '2025', description: '3d vector img' },
+    { id: '07', image: '/img/ill2.png', title: '3D Vector Illustration', year: '2025', description: '3d vector img' },
+    { id: '08', image: '/img/ill3.png', title: '3D Vector Illustration', year: '2025', description: '3d vector img' },
+    { id: '09', image: '/img/ill4.png', title: '3D Vector Illustration', year: '2025', description: '3d vector img' },
     { id: '10', image: '/img/amio5.png', title: 'Packaging Design', year: '2024', description: 'Product packaging design for a line of organic snacks.' },
-    { id: '11', image: '/img/ill5.png', title: 'Digital Painting', year: '2023', description: 'A landscape digital painting created in Procreate.' },
-    { id: '12', image: '/img/ill6.png', title: 'T-Shirt Graphic', year: '2022', description: 'Graphic design for a limited edition t-shirt.' },
+    { id: '11', image: '/img/ill5.png', title: 'Pixel art', year: '2025', description: 'A landscape digital painting created in Procreate.' },
+    { id: '12', image: '/img/ill6.png', title: 'Pixel art', year: '2025', description: 'Graphic design for a limited edition t-shirt.' },
     { id: '13', image: '/img/ill7.png', title: 'Infographic', year: '2024', description: 'Data visualization and infographic design on environmental statistics.' },
     { id: '14', image: '/img/pig.png', title: '3D Model', year: '2023', description: 'A low-poly 3D model of a stylized animal character.' },
     { id: '15', image: '/img/pho1.png', title: 'Product Photography', year: '2024', description: 'Studio photography for a luxury watch brand.' },
     { id: '16', image: '/img/pho2.png', title: 'Portrait Photography', year: '2023', description: 'A series of black and white portraits.' },
     { id: '17', image: '/img/null.jpg', title: 'Architectural Photography', year: '2022', description: 'Capturing the details of modern architecture.' },
-    { id: '18', image: '/img/pho3.png', title: 'Food Photography', year: '2024', description: 'Stylized food photography for a restaurant menu.' },
+    { id: '18', image: '/img/pho3.png', title: 'Digital Artwork', year: '2024', description: 'Digital Artwork used by photoshap' },
     { id: '19', image: '/img/clean1.png', title: 'Website Redesign', year: '2023', description: 'A complete UX/UI redesign for an e-commerce website.' },
     { id: '20', image: '/img/clean2.png', title: 'Landing Page', year: '2024', description: 'Design and development of a high-conversion landing page.' },
     { id: '21', image: '/img/null.jpg', title: 'Motion Graphics', year: '2023', description: 'An animated logo reveal for a tech startup.' },
     { id: '22', image: '/img/null.jpg', title: 'Social Media Campaign', year: '2024', description: 'Visual assets for a social media marketing campaign.' },
     { id: '23', image: '/img/null.jpg', title: 'Book Cover Design', year: '2022', description: 'Cover design for a fantasy novel.' },
-    { id: '24', image: '/img/pho4.png', title: 'Abstract Photography', year: '2024', description: 'Exploring textures and light through abstract photography.' },
+    { id: '24', image: '/img/null.jpg', title: 'Abstract Photography', year: '2024', description: 'Exploring textures and light through abstract photography.' },
   ];
 
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // [수정] null.jpg인 경우 팝업이 뜨지 않도록 조건 추가
+  // null.jpg인 경우 팝업이 뜨지 않도록
   const handleProjectClick = (project) => {
     // 클릭된 프로젝트의 이미지 경로에 'null.jpg'가 포함되어 있으면 함수를 즉시 종료
     if (project.image.includes('null.jpg')) {

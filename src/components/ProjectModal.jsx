@@ -34,7 +34,7 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         {/* 오른쪽: 이미지 */}
-        <div className="w-1/2 h-full flex items-center justify-center bg-black p-4">
+        <div className="w-1/2 h-full flex items-center justify-center  p-4">
           <img
             src={project.image}
             alt={project.title}
