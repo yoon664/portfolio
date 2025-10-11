@@ -20,7 +20,8 @@ import { personalData } from './data';
 
 const App = () => {
   return (
-    <div className="text-white font-mono relative overflow-x-hidden">
+    //overflow-x-hidden 클래스 제거
+    <div className="text-white font-mono relative">
       <Header />
       <Progressbar showPercentage={false} />
       
@@ -33,7 +34,7 @@ const App = () => {
         <AboutSection personalData={personalData} />
         
         {/* Section 3: Portfolio works */}
-        <div className="relative">
+        <div className="relative h-[300vh]">
           <PortfolioSection />
           <PortfolioSection2 />
           <PortfolioSection3 />
