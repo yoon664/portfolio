@@ -68,10 +68,10 @@ const ProjectsSection = () => {
         </header>
 
         <div className="flex-1">
-          {/* --- ▼▼▼ 모바일/태블릿 뷰 (lg 이하) --- */}
+
           <div className="lg:hidden border-t border-dashed border-gray-400">
             <div className="grid grid-cols-3">
-              {/* slice(0, 12)를 사용하여 12개 아이템만 렌더링 */}
+              {/* slice 사용 12개 아이템만 렌더링 */}
               {archiveItems.slice(0, 12).map((item) => (
                 <div 
                   key={item.id}
@@ -91,10 +91,8 @@ const ProjectsSection = () => {
             </div>
           </div>
 
-          {/* --- ▼▼▼ 데스크탑 뷰 (lg 이상) --- */}
           <div className="hidden lg:block border-t border-dashed border-gray-400">
             <div className="grid grid-cols-8">
-              {/* 모든 아이템을 렌더링 */}
               {archiveItems.map((item) => (
                 <div 
                   key={item.id}
