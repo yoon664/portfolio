@@ -1,4 +1,5 @@
-// AboutSection.jsx
+// src/components/AboutSection.jsx
+
 import React, { useState, useEffect } from 'react';
 
 const AboutSection = ({ personalData }) => {
@@ -139,9 +140,11 @@ const AboutSection = ({ personalData }) => {
             </div>
             <div className="flex items-center justify-center h-full z-20">
                 <div className="text-center">
-                    <p className="text-6xl font-script italic text-gray-100 mb-4">
-                    read more
-                    </p>
+                    <a href={resumePdf} download="유은지_이력서.pdf">
+                      <p className="text-6xl font-script italic text-gray-100 mb-4 cursor-pointer hover:opacity-80 transition-opacity">
+                        read more
+                      </p>
+                    </a>
                 </div>
             </div>
             <div className="absolute bottom-1 left-0 right-0 text-center z-20">
