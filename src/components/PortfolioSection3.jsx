@@ -68,18 +68,16 @@ const PortfolioSection3 = () => {
           <div className="flex gap-8 flex-1">
             <div className="w-80 flex flex-col justify-start">
               <p className="text-xs leading-relaxed mb-6 jetbrains uppercase" style={{ color: '#212121' }}>
-                Whimsical animations bring each character to life, revealing their profiles, personalities, and merchandise. 
-                The project is defined by its soft pastel design and fluid motion, presented as a heartfelt, 
-                fan-page-style portfolio that showcases a genuine passion for the characters.
+                A dynamic website created to showcase the rich history and brand identity of the Hanhwa Eagles. The site utilizes scroll-based animations and a clean, modern interface to guide users through the team's significant milestones and evolution in an engaging narrative format.
               </p>
               <a 
                 href="https://yoon664.github.io/han-eagle/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains inline-block" 
-                style={{ color: '#212121' }}
+                className="relative group overflow-hidden px-4 py-2 text-xs font-medium tracking-wider uppercase jetbrains inline-block bg-black text-white hover:text-black transition-colors duration-400 ease-out"
               >
-                <span className="flex items-center gap-2">
+                <div className="absolute bottom-0 left-0 right-0 h-0 bg-white transition-all duration-400 ease-out group-hover:h-full z-0"></div>
+                <span className="relative flex items-center gap-2 z-10">
                   VIEW PROJECT 
                   <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </span>
@@ -139,10 +137,10 @@ const PortfolioSection3 = () => {
               href="https://yoon664.github.io/han-eagle/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" 
-              style={{ color: '#212121' }}
+              className="relative group overflow-hidden px-4 py-2 text-xs font-medium tracking-wider uppercase jetbrains inline-block bg-black text-white hover:text-black transition-colors duration-400 ease-out"
             >
-              <span className="flex items-center gap-2">
+              <div className="absolute bottom-0 left-0 right-0 h-0 bg-white transition-all duration-400 ease-out group-hover:h-full z-0"></div>
+              <span className="relative flex items-center gap-2 z-10">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
@@ -160,9 +158,7 @@ const PortfolioSection3 = () => {
           </div>
 
           <p className="text-xs leading-relaxed jetbrains uppercase" style={{ color: '#212121' }}>
-            Whimsical animations bring each character to life, revealing their profiles, personalities, and merchandise. 
-            The project is defined by its soft pastel design and fluid motion, presented as a heartfelt, 
-            fan-page-style portfolio that showcases a genuine passion for the characters.
+            A dynamic website created to showcase the rich history and brand identity of the Hanhwa Eagles. The site utilizes scroll-based animations and a clean, modern interface to guide users through the team's significant milestones and evolution in an engaging narrative format.
           </p>
         </div>
       </div>

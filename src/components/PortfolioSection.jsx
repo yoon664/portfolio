@@ -79,10 +79,10 @@ const PortfolioSection = () => {
                 href="https://yoon664.github.io/sanrio_po/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains inline-block" 
-                style={{ color: '#212121' }}
+                className="relative group overflow-hidden px-4 py-2 text-xs font-medium tracking-wider uppercase jetbrains inline-block bg-black text-white hover:text-black transition-colors duration-400 ease-out"
               >
-                <span className="flex items-center gap-2">
+                <div className="absolute bottom-0 left-0 right-0 h-0 bg-white transition-all duration-400 ease-out group-hover:h-full z-0"></div>
+                <span className="relative flex items-center gap-2 z-10">
                   VIEW PROJECT 
                   <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </span>
@@ -143,10 +143,10 @@ const PortfolioSection = () => {
               href="https://yoon664.github.io/sanrio_po/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-xs font-medium tracking-wider uppercase hover:opacity-70 transition-opacity duration-300 group jetbrains" 
-              style={{ color: '#212121' }}
+              className="relative group overflow-hidden px-4 py-2 text-xs font-medium tracking-wider uppercase jetbrains inline-block bg-black text-white hover:text-black transition-colors duration-400 ease-out"
             >
-              <span className="flex items-center gap-2">
+              <div className="absolute bottom-0 left-0 right-0 h-0 bg-white transition-all duration-400 ease-out group-hover:h-full z-0"></div>
+              <span className="relative flex items-center gap-2 z-10">
                 VIEW PROJECT 
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
               </span>
