@@ -33,10 +33,10 @@ const ProjectsSection = () => {
 
   const handleProjectClick = (project) => {
     if (!project.image) {
-    return;
-  }
-  setSelectedProject(project);
-};
+      return;
+    }
+    setSelectedProject(project);
+  };
 
   const handleCloseModal = () => {
     setSelectedProject(null);
@@ -69,34 +69,39 @@ const ProjectsSection = () => {
 
         <div className="flex-1">
 
+
           <div className="lg:hidden border-t border-dashed border-gray-400">
             <div className="grid grid-cols-3">
-              {/* slice 사용 12개 아이템만 렌더링 */}
-              {archiveItems.slice(0, 12).map((item) => (
-                <div 
-                  key={item.id}
-                  className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${!item.image.includes('null.jpg') && 'cursor-pointer'}`}
-                  onClick={() => handleProjectClick(item)}
-                  tabIndex={0}
-                >
-                  <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
-                    <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+              {archiveItems
+                .filter(item => item.image) 
+                .slice(0, 12)
+                .map((item) => (
+                  <div 
+                    key={item.id}
+                    className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
+                    onClick={() => handleProjectClick(item)}
+                    tabIndex={0}
+                  >
+                    <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
+                      <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+                    </div>
+                    <div className="w-full h-full aspect-square">
+
+                      {item.image && (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
+                      )}
+                    </div>
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                   </div>
-                  <div className="w-full h-full aspect-square">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
-                  </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
 
           <div className="hidden lg:block border-t border-dashed border-gray-400">
             <div className="grid grid-cols-8">
               {archiveItems.map((item) => (
-                <div
+                <div 
                   key={item.id}
-                  // item.image가 있을 때만 cursor-pointer를 적용합니다.
                   className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
                   onClick={() => handleProjectClick(item)}
                   tabIndex={0}
@@ -105,7 +110,6 @@ const ProjectsSection = () => {
                     <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
                   </div>
                   <div className="w-full h-full aspect-square">
-                    {/* item.image가 있을 때만 img 태그를 렌더링합니다. */}
                     {item.image && (
                       <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
                     )}
