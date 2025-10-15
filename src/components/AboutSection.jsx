@@ -28,8 +28,8 @@ const AboutSection = ({ personalData }) => {
       <div className="perspective-1000 w-full max-w-sm md:max-w-[920px] h-[600px] md:h-[480px] group">
         <div className="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-preserve-3d cursor-pointer group-hover:rotate-x-180">
           
-          {/* Front Side - Yellow Notebook */}
-          <div className="flip-card-front absolute inset-0 backface-hidden text-black shadow-2xl rounded-md relative overflow-hidden" style={{backgroundColor: '#ffe430'}}>
+          {/* Front Side - Yellow Notebook - pointer-events-none 추가 */}
+          <div className="flip-card-front absolute inset-0 backface-hidden text-black shadow-2xl rounded-md relative overflow-hidden pointer-events-none" style={{backgroundColor: '#ffe430'}}>
             {/* Background with notebook texture */}
             <div className="absolute inset-0" style={{backgroundColor: '#ffe430'}}></div>
             
@@ -122,37 +122,55 @@ const AboutSection = ({ personalData }) => {
             </div>
           </div>
 
-          {/* 뒷면 뚫린 원 */}
-          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-[#212121] text-white shadow-2xl rounded-md relative overflow-hidden">
-            <div className="absolute top-8 left-0 right-0 border-t border-dashed border-white opacity-20 z-10"></div>
-            <div className="absolute bottom-8 left-0 right-0 border-b border-dashed border-white opacity-20 z-10"></div>
-            <div className="absolute left-8 top-0 bottom-0 border-l border-dashed border-white opacity-20 z-10"></div>
-            <div className="absolute right-8 top-0 bottom-0 border-r border-dashed border-white opacity-20 z-10"></div>
-            <div className="absolute left-3 top-3 bottom-3 flex flex-col justify-between z-30">
-                <div className="w-3 h-3 rounded-full" style={{ background: '#1C212C' }}></div>
-                <div className="w-3 h-3 rounded-full" style={{ background: '#212633' }}></div>
-                <div className="w-3 h-3 rounded-full" style={{ background: '#272E3B' }}></div>
-                <div className="w-3 h-3 rounded-full" style={{ background: '#29313D' }}></div>
-                <div className="w-3 h-3 rounded-full" style={{ background: '#2E3442' }}></div>
+          {/* 뒷면 - pointer-events-auto 추가 */}
+          <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-[#212121] text-white shadow-2xl rounded-md relative overflow-hidden pointer-events-auto">
+            {/* 점선들 - pointer-events 비활성화 */}
+            <div className="absolute top-8 left-0 right-0 border-t border-dashed border-white opacity-20 z-10 pointer-events-none"></div>
+            <div className="absolute bottom-8 left-0 right-0 border-b border-dashed border-white opacity-20 z-10 pointer-events-none"></div>
+            <div className="absolute left-8 top-0 bottom-0 border-l border-dashed border-white opacity-20 z-10 pointer-events-none"></div>
+            <div className="absolute right-8 top-0 bottom-0 border-r border-dashed border-white opacity-20 z-10 pointer-events-none"></div>
+            
+            {/* 뚫린 원 - pointer-events 비활성화 */}
+            <div className="absolute left-3 top-3 bottom-3 flex flex-col justify-between z-30 pointer-events-none">
+              <div className="w-3 h-3 rounded-full" style={{ background: '#1C212C' }}></div>
+              <div className="w-3 h-3 rounded-full" style={{ background: '#212633' }}></div>
+              <div className="w-3 h-3 rounded-full" style={{ background: '#272E3B' }}></div>
+              <div className="w-3 h-3 rounded-full" style={{ background: '#29313D' }}></div>
+              <div className="w-3 h-3 rounded-full" style={{ background: '#2E3442' }}></div>
             </div>
-            <div className="absolute top-1 left-0 right-0 text-center z-20">
-                <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
+            
+            {/* 상단 ABOUT - pointer-events 비활성화 */}
+            <div className="absolute top-1 left-0 right-0 text-center z-20 pointer-events-none">
+              <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
             </div>
-            <div className="flex items-center justify-center h-full z-20">
-                <div className="text-center">
-                    {/* 이력서 파일 연결 */}
-                    <a href={`${import.meta.env.BASE_URL}resume-eunji.pdf`} download="유은지_이력서.pdf">
-                      <p className="text-6xl font-script italic text-gray-100 mb-4 cursor-pointer hover:opacity-80 transition-opacity">
-                        read more
-                      </p>
-                    </a>
-                </div>
+            
+            {/* read more 링크 - z-index 높이고 pointer-events 활성화 */}
+            <div className="flex items-center justify-center h-full z-50 relative pointer-events-none">
+              <div className="text-center pointer-events-auto">
+                <a 
+                  href={`${import.meta.env.BASE_URL}resume-eunji.pdf`}
+                  download="유은지_이력서.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    console.log('클릭됨!');
+                    console.log('URL:', e.currentTarget.href);
+                  }}
+                  className="text-6xl font-script italic text-gray-100 mb-4 cursor-pointer hover:opacity-80 transition-opacity block"
+                >
+                  read more
+                </a>
+              </div>
             </div>
-            <div className="absolute bottom-1 left-0 right-0 text-center z-20">
-                <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
+            
+            {/* 하단 ABOUT - pointer-events 비활성화 */}
+            <div className="absolute bottom-1 left-0 right-0 text-center z-20 pointer-events-none">
+              <span className="text-xs uppercase jetbrains text-gray-400">ABOUT</span>
             </div>
-            <div className="absolute -right-7 top-1/2 transform -translate-y-1/2 -rotate-90 z-20">
-                <span className="text-xs uppercase jetbrains text-gray-400">YOOEUNJIWORKS</span>
+            
+            {/* 오른쪽 세로 텍스트 - pointer-events 비활성화 */}
+            <div className="absolute -right-7 top-1/2 transform -translate-y-1/2 -rotate-90 z-20 pointer-events-none">
+              <span className="text-xs uppercase jetbrains text-gray-400">YOOEUNJIWORKS</span>
             </div>
           </div>
         </div>
