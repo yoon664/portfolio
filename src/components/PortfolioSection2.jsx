@@ -1,10 +1,7 @@
 import React from 'react';
 
 const PortfolioSection2 = () => {
-  const scrollingTags = [
-    "3D Modeling", "Character Design", "Character Rigging", 
-    "Texturing", "3D Animation"
-  ];
+
 
   return (
     <section 
@@ -41,7 +38,7 @@ const PortfolioSection2 = () => {
                 ~ TECH WORKS
               </div>
               
-              <div className="bg-gray-200 rounded-sm p-3 w-80 overflow-hidden">
+              {/* <div className="bg-gray-200 rounded-sm p-3 w-80 overflow-hidden">
                 <div className="flex animate-scroll whitespace-nowrap">
                   {[...Array(3)].map((_, i) => (
                     <div key={i} className="flex gap-8 mr-8">
@@ -57,7 +54,7 @@ const PortfolioSection2 = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 

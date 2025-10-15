@@ -2,10 +2,7 @@ import React from 'react';
 
 const PortfolioSection = () => {
   // scrollingTags는 데스크탑에서만 사용되므로 그대로 둡니다.
-  const scrollingTags = [
-    "3D Modeling", "Character Design", "Character Rigging", 
-    "Texturing", "3D Animation"
-  ];
+
 
   return (
     <section 
@@ -43,7 +40,7 @@ const PortfolioSection = () => {
               </div>
               
               {/* Scrolling Tags Box */}
-              <div className="bg-gray-200 rounded-sm p-3 w-80 overflow-hidden">
+              {/* <div className="bg-gray-200 rounded-sm p-3 w-80 overflow-hidden">
                 <div className="flex animate-scroll whitespace-nowrap">
                   {[...Array(3)].map((_, i) => (
                     <div key={i} className="flex gap-8 mr-8">
@@ -59,7 +56,7 @@ const PortfolioSection = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
