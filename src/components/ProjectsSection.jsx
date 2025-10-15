@@ -32,7 +32,6 @@ const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const handleProjectClick = (project) => {
-    // 이미지가 없으면 모달을 안열리게
     if (!project.image) {
       return;
     }
@@ -43,7 +42,6 @@ const ProjectsSection = () => {
     setSelectedProject(null);
   };
 
-  // 데스크탑 뷰에서 이미지가 있는 항목의 번호를 매기기 위한 카운터
   let imageCounter = 0;
 
   return (
@@ -77,17 +75,17 @@ const ProjectsSection = () => {
           <div className="lg:hidden border-t border-dashed border-gray-400">
             <div className="grid grid-cols-3">
               {archiveItems
-                .filter(item => item.image) // 이미지가 있는 항목만 필터링!!
+                .filter(item => item.image)
                 .slice(0, 12)
-                .map((item, index) => ( 
+                .map((item, index) => (
                   <div 
                     key={item.id}
-                    className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
+                    // 이미지가 있을 때만 group 클래스와 cursor-pointer를 적용
+                    className={`relative overflow-hidden p-4 border-r border-b border-dashed border-gray-400 ${item.image ? 'group cursor-pointer' : ''}`}
                     onClick={() => handleProjectClick(item)}
                     tabIndex={0}
                   >
                     <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
-                      {/* index로 01,02 형식으로 번호 표시 */}
                       <span className="text-xs jetbrains" style={{ color: '#212121' }}>
                         {String(index + 1).padStart(2, '0')}
                       </span>
@@ -107,7 +105,6 @@ const ProjectsSection = () => {
           <div className="hidden lg:block border-t border-dashed border-gray-400">
             <div className="grid grid-cols-8">
               {archiveItems.map((item) => {
-                // 이미지가 있는 경우에만 카운터를 증가시킴
                 if (item.image) {
                   imageCounter++;
                 }
@@ -115,13 +112,13 @@ const ProjectsSection = () => {
                 return (
                   <div 
                     key={item.id}
-                    className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
+                    // 이미지가 있을 때만 group 클래스와 cursor-pointer를 적용
+                    className={`relative overflow-hidden p-4 border-r border-b border-dashed border-gray-400 ${item.image ? 'group cursor-pointer' : ''}`}
                     onClick={() => handleProjectClick(item)}
                     tabIndex={0}
                   >
                     <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
                       <span className="text-xs jetbrains" style={{ color: '#212121' }}>
-                        {/* 이미지가 있을 때만 번호를 표시 */}
                         {item.image ? String(imageCounter).padStart(2, '0') : ''}
                       </span>
                     </div>
