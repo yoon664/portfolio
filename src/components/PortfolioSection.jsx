@@ -159,7 +159,7 @@ const PortfolioSection = () => {
           {/* 메인 이미지 */}
           <div className="mb-4">
             <img 
-              src="/img/sanrio1.png" 
+              src="img/sanrio1.png" 
               alt="Sanrio main" 
               className="w-full h-auto object-cover rounded-sm"
             />

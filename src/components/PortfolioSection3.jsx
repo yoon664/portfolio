@@ -151,7 +151,7 @@ const PortfolioSection3 = () => {
 
           <div className="mb-4">
             <img 
-              src="/img/hanhwa.png" 
+              src="img/hanhwa.png" 
               alt="Hanhwa main" 
               className="w-full h-auto object-cover rounded-sm"
             />

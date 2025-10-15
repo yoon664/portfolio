@@ -156,7 +156,7 @@ const PortfolioSection2 = () => {
 
           <div className="mb-4">
             <video 
-              src="/img/amio1.mp4" 
+              src="img/amio1.mp4" 
               autoPlay 
               loop 
               muted 
