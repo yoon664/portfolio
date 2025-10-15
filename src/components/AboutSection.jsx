@@ -141,7 +141,7 @@ const AboutSection = ({ personalData }) => {
             <div className="flex items-center justify-center h-full z-20">
                 <div className="text-center">
                     {/* 이력서 파일 연결 */}
-                    <a href="/resume-eunji.pdf" download="유은지_이력서.pdf">
+                    <a href={`${import.meta.env.BASE_URL}resume-eunji.pdf`} download="유은지_이력서.pdf">
                       <p className="text-6xl font-script italic text-gray-100 mb-4 cursor-pointer hover:opacity-80 transition-opacity">
                         read more
                       </p>
