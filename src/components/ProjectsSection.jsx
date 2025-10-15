@@ -32,6 +32,7 @@ const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const handleProjectClick = (project) => {
+    // 이미지가 없으면 모달을 안열리게
     if (!project.image) {
       return;
     }
@@ -41,6 +42,9 @@ const ProjectsSection = () => {
   const handleCloseModal = () => {
     setSelectedProject(null);
   };
+
+  // 데스크탑 뷰에서 이미지가 있는 항목의 번호를 매기기 위한 카운터
+  let imageCounter = 0;
 
   return (
     <>
@@ -69,13 +73,13 @@ const ProjectsSection = () => {
 
         <div className="flex-1">
 
-
+          {/* --- 모바일 버전 레이아웃 --- */}
           <div className="lg:hidden border-t border-dashed border-gray-400">
             <div className="grid grid-cols-3">
               {archiveItems
-                .filter(item => item.image) 
+                .filter(item => item.image) // 이미지가 있는 항목만 필터링!!
                 .slice(0, 12)
-                .map((item) => (
+                .map((item, index) => ( 
                   <div 
                     key={item.id}
                     className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
@@ -83,10 +87,12 @@ const ProjectsSection = () => {
                     tabIndex={0}
                   >
                     <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
-                      <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+                      {/* index로 01,02 형식으로 번호 표시 */}
+                      <span className="text-xs jetbrains" style={{ color: '#212121' }}>
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
                     </div>
                     <div className="w-full h-full aspect-square">
-
                       {item.image && (
                         <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
                       )}
@@ -97,26 +103,37 @@ const ProjectsSection = () => {
             </div>
           </div>
 
+          {/* --- 데스크탑 버전 레이아웃 --- */}
           <div className="hidden lg:block border-t border-dashed border-gray-400">
             <div className="grid grid-cols-8">
-              {archiveItems.map((item) => (
-                <div 
-                  key={item.id}
-                  className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
-                  onClick={() => handleProjectClick(item)}
-                  tabIndex={0}
-                >
-                  <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
-                    <span className="text-xs jetbrains" style={{ color: '#212121' }}>{item.id}</span>
+              {archiveItems.map((item) => {
+                // 이미지가 있는 경우에만 카운터를 증가시킴
+                if (item.image) {
+                  imageCounter++;
+                }
+                
+                return (
+                  <div 
+                    key={item.id}
+                    className={`relative overflow-hidden group p-4 border-r border-b border-dashed border-gray-400 ${item.image && 'cursor-pointer'}`}
+                    onClick={() => handleProjectClick(item)}
+                    tabIndex={0}
+                  >
+                    <div className="absolute top-3 left-3 z-10 bg-white px-0.5 py-0.5">
+                      <span className="text-xs jetbrains" style={{ color: '#212121' }}>
+                        {/* 이미지가 있을 때만 번호를 표시 */}
+                        {item.image ? String(imageCounter).padStart(2, '0') : ''}
+                      </span>
+                    </div>
+                    <div className="w-full h-full aspect-square">
+                      {item.image && (
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
+                      )}
+                    </div>
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                   </div>
-                  <div className="w-full h-full aspect-square">
-                    {item.image && (
-                      <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-300"/>
-                    )}
-                  </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
