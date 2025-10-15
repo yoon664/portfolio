@@ -1,6 +1,7 @@
 // src/components/AboutSection.jsx
 
 import React, { useState, useEffect } from 'react';
+import resumePdf from '../assets/유은지 이력서.pdf';
 
 const AboutSection = ({ personalData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
