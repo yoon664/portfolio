@@ -1,7 +1,6 @@
 // src/components/AboutSection.jsx
 
 import React, { useState, useEffect } from 'react';
-import resumePdf from '../assets/유은지 이력서.pdf';
 
 const AboutSection = ({ personalData }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,7 +12,7 @@ const AboutSection = ({ personalData }) => {
     { number: '04', category: 'PHOTOSHOP', work: 'PHOTOSHOP' }
   ];
 
-  // Auto slide every 3 seconds
+  // 3초 슬라이드
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideData.length);
@@ -41,7 +40,7 @@ const AboutSection = ({ personalData }) => {
             <div className="hidden md:block absolute left-1/3 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
             <div className="absolute left-8 top-0 bottom-0 border-l border-dashed border-gray-600 opacity-30 z-10"></div>
             
-            {/* Notebook holes on the left */}
+            {/* 왼쪽에 뚫린 원 */}
             <div className="absolute left-3 top-3 bottom-3 flex flex-col justify-between z-30">
               <div className="w-3 h-3 rounded-full" style={{ background: '#1C212C' }}></div>
               <div className="w-3 h-3 rounded-full" style={{ background: '#212633' }}></div>
@@ -123,7 +122,7 @@ const AboutSection = ({ personalData }) => {
             </div>
           </div>
 
-          {/* Back Side - Dark Notebook */}
+          {/* 뒷면 뚫린 원 */}
           <div className="flip-card-back absolute inset-0 backface-hidden rotate-x-180 bg-[#212121] text-white shadow-2xl rounded-md relative overflow-hidden">
             <div className="absolute top-8 left-0 right-0 border-t border-dashed border-white opacity-20 z-10"></div>
             <div className="absolute bottom-8 left-0 right-0 border-b border-dashed border-white opacity-20 z-10"></div>
@@ -141,7 +140,8 @@ const AboutSection = ({ personalData }) => {
             </div>
             <div className="flex items-center justify-center h-full z-20">
                 <div className="text-center">
-                    <a href={resumePdf} download="유은지_이력서.pdf">
+                    {/* 이력서 파일 연결 */}
+                    <a href="/resume-eunji.pdf" download="유은지_이력서.pdf">
                       <p className="text-6xl font-script italic text-gray-100 mb-4 cursor-pointer hover:opacity-80 transition-opacity">
                         read more
                       </p>
