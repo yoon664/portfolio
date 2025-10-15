@@ -1,3 +1,9 @@
+## 251015
+
+readmore 클릭시 이력서 뜨게
+3 6 12 빼 버리고 나머지 숫자만
+
+
 폰트
 https://cotypefoundry.com/font-family/lock  유료
 
